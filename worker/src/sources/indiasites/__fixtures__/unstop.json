@@ -1,0 +1,308 @@
+{
+ "internships": [
+  {
+   "id": 1816712,
+   "public_url": "internships/growth-lead-generation-intern-remote-opterai-1816712",
+   "title": "Growth / Lead Generation Internship",
+   "type": "jobs",
+   "subtype": "internships",
+   "status": "LIVE",
+   "visibility": "public",
+   "updated_at": "2026-11-17T23:15:13+05:30",
+   "approved_date": "2026-11-17 23:13:44 GMT+0530",
+   "end_date": "2026-12-01T00:00:00+05:30",
+   "region": "online",
+   "seo_url": "https://unstop.com/internships/growth-lead-generation-intern-remote-opterai-1816712",
+   "details": "<p>OPTERA (OPTERAI LABS PRIVATE LIMITED) is a DPIIT-recognised AI startup in Ahmedabad. We help bus, truck and tanker fleet operators run their daily operations in one place: maintenance, reports and more.</p>\n<p>We are looking for a Growth / Lead Generation Intern to help us find new customers. This is a remote internship for 3 months.</p>\n<p><strong>What you will do:</strong></p>\n<ul>\n<li>Find fleet business owners using AI tools like Apollo, LinkedIn and Google Maps</li>\n<li>Build a clean lead list in Google Sheets with name, company, phone and city</li>\n<li>Reach out on WhatsApp, email and calls to book demo meetings with our founder</li>\n<li>Follow up with leads and track daily numbers:",
+   "organisation": {
+    "id": 2103925,
+    "name": "Opterai"
+   },
+   "isPaid": false,
+   "locations": [
+    {
+     "city": "Ahmedabad",
+     "state": "Gujarat",
+     "country": "India"
+    }
+   ],
+   "jobDetail": {
+    "entity_id": 1816712,
+    "max_salary": 7000,
+    "currency": "fa-rupee",
+    "locations": [
+     "Ahmedabad"
+    ],
+    "type": "wfh",
+    "min_salary": 5000,
+    "show_salary": 1,
+    "min_experience": null,
+    "max_experience": null,
+    "timing": "full_time",
+    "paid_unpaid": "paid",
+    "pay_in": "monthly",
+    "not_disclosed": false
+   },
+   "required_skills": [
+    {
+     "skill_name": "Sales Prospecting"
+    },
+    {
+     "skill_name": "Lead Qualification"
+    },
+    {
+     "skill_name": "Verbal Communication"
+    },
+    {
+     "skill_name": "Spreadsheet Software (Excel, Google Sheets)"
+    }
+   ],
+   "regnRequirements": {
+    "work_location_type": "city",
+    "eligibility": "{\"sector\":[\"students\"]}"
+   }
+  },
+  {
+   "id": 1816903,
+   "public_url": "internships/video-editor-intern-closekart-private-limited-1816903",
+   "title": "Video Editor Internship",
+   "type": "jobs",
+   "subtype": "internships",
+   "status": "LIVE",
+   "visibility": "public",
+   "updated_at": "2026-11-18T00:50:50+05:30",
+   "approved_date": "2026-11-18 00:50:01 GMT+0530",
+   "end_date": "2026-12-01T00:00:00+05:30",
+   "region": "online",
+   "seo_url": "https://unstop.com/internships/video-editor-intern-closekart-private-limited-1816903",
+   "details": "<p><strong>CloseKart Private Limited is hiring for Video Editor Intern</strong></p>\n<p><strong>About the Company</strong></p>\n<p>CloseKart Private Limited is seeking a creative Video Editor to support social media marketing content. This remote internship is an opportunity to shape short-form and other digital video assets that help communicate ideas clearly and engage online audiences. The internship is unpaid and runs for four months. Applicants from a fresher background are welcome, and prior experience is not required.</p>\n<p><strong>Responsibilities</strong></p>\n<ul>\n<li>\n<div>\n<div>\n<p>Edit videos for CloseKart's digital marketing and promotional activities.</p>\n</div>\n</div>\n</li>\n<li",
+   "organisation": {
+    "id": 1963662,
+    "name": "CloseKart Private Limited"
+   },
+   "isPaid": false,
+   "locations": [],
+   "jobDetail": {
+    "entity_id": 1816903,
+    "max_salary": null,
+    "currency": "fa-rupee",
+    "locations": [],
+    "type": "wfh",
+    "min_salary": null,
+    "show_salary": 1,
+    "min_experience": null,
+    "max_experience": null,
+    "timing": "part_time",
+    "paid_unpaid": "unpaid",
+    "pay_in": "monthly",
+    "not_disclosed": false
+   },
+   "required_skills": [
+    {
+     "skill_name": "Marketing Campaign Planning"
+    },
+    {
+     "skill_name": "Marketing Planning"
+    },
+    {
+     "skill_name": "Adobe Photoshop"
+    },
+    {
+     "skill_name": "Adobe Premiere Pro"
+    }
+   ],
+   "regnRequirements": {
+    "work_location_type": "city",
+    "eligibility": "{\"sector\":[\"students\"]}"
+   }
+  }
+ ],
+ "jobs": [
+  {
+   "id": 1816920,
+   "public_url": "jobs/web-application-developer-corivaone-1816920",
+   "title": "Web Application Developer",
+   "type": "jobs",
+   "subtype": "jobs",
+   "status": "LIVE",
+   "visibility": "public",
+   "updated_at": "2026-11-18T01:10:08+05:30",
+   "approved_date": "2026-11-18 00:44:36 GMT+0530",
+   "end_date": "2026-12-01T00:00:00+05:30",
+   "region": "online",
+   "seo_url": "https://unstop.com/jobs/web-application-developer-corivaone-1816920",
+   "details": "<p>We are looking for a skilled and experienced <strong>Web Application Developer</strong> with a minimum of 3 years of hands-on experience in developing, maintaining, and optimizing dynamic web applications.</p>\n<p>The ideal candidate should have strong technical expertise in HTML5, CSS3, JavaScript, jQuery, Bootstrap, and PHP, along with experience in responsive UI development, API integration, website performance optimization, and web analytics tools.</p>\n<p>The candidate will be responsible for developing user-friendly, responsive, and high-performance web applications while ensuring code quality, functionality, and cross-browser compatibility.</p>\n<p><strong>Key Roles &amp; Responsibili",
+   "organisation": {
+    "id": 2114598,
+    "name": "Corivaone"
+   },
+   "isPaid": false,
+   "locations": [
+    {
+     "city": "Thane",
+     "state": "Maharashtra",
+     "country": "India"
+    }
+   ],
+   "jobDetail": {
+    "entity_id": 1816920,
+    "max_salary": 800000,
+    "currency": "fa-rupee",
+    "locations": [
+     "Thane"
+    ],
+    "type": "in_office",
+    "min_salary": 600000,
+    "show_salary": 1,
+    "min_experience": null,
+    "max_experience": null,
+    "timing": "full_time",
+    "paid_unpaid": "paid",
+    "pay_in": "annually",
+    "not_disclosed": false
+   },
+   "required_skills": [
+    {
+     "skill_name": "JavaScript"
+    },
+    {
+     "skill_name": "PHP"
+    },
+    {
+     "skill_name": "HTML"
+    },
+    {
+     "skill_name": "CSS"
+    }
+   ],
+   "regnRequirements": {
+    "work_location_type": "city",
+    "eligibility": "{\"sector\":[\"corporates\"]}"
+   }
+  },
+  {
+   "id": 1816497,
+   "public_url": "jobs/manufacturing-erp-sales-manager-monexa-automation-private-limited-1816497",
+   "title": "Manufacturing ERP Sales Manager",
+   "type": "jobs",
+   "subtype": "jobs",
+   "status": "LIVE",
+   "visibility": "public",
+   "updated_at": "2026-11-17T19:48:10+05:30",
+   "approved_date": "2026-11-17 19:48:10 GMT+0530",
+   "end_date": "2026-12-01T00:00:00+05:30",
+   "region": "online",
+   "seo_url": "https://unstop.com/jobs/manufacturing-erp-sales-manager-monexa-automation-private-limited-1816497",
+   "details": "<p><strong>Monexa Automation Private Limited is hiring for Manufacturing ERP Sales Manager</strong></p>\n<p><strong>About the Company</strong></p>\n<p>Monexa Automation Private Limited develops software solutions that support manufacturing operations, including production and inventory management. The team is seeking a commercially driven Manufacturing ERP Sales Manager to help manufacturing businesses identify practical ways to improve operational visibility and control through ERP software.</p>\n<p><strong>Responsibilities</strong></p>\n<ul>\n<li>Build and manage a consistent sales pipeline among manufacturing units in the Ahmedabad region and beyond.</li>\n<li>Understand prospects&rsquo; produc",
+   "organisation": {
+    "id": 2157514,
+    "name": "Monexa Automation Private Limited"
+   },
+   "isPaid": false,
+   "locations": [
+    {
+     "city": "Ahmedabad",
+     "state": "Gujarat",
+     "country": "India"
+    }
+   ],
+   "jobDetail": {
+    "entity_id": 1816497,
+    "max_salary": 70000,
+    "currency": "fa-rupee",
+    "locations": [
+     "Ahmedabad"
+    ],
+    "type": "in_office",
+    "min_salary": 50000,
+    "show_salary": 1,
+    "min_experience": null,
+    "max_experience": null,
+    "timing": "full_time",
+    "paid_unpaid": "paid",
+    "pay_in": "monthly",
+    "not_disclosed": false
+   },
+   "required_skills": [
+    {
+     "skill_name": "Technical Sales"
+    },
+    {
+     "skill_name": "Sales Pipeline Management"
+    },
+    {
+     "skill_name": "Negotiation"
+    },
+    {
+     "skill_name": "Relationship Management"
+    }
+   ],
+   "regnRequirements": {
+    "work_location_type": "city",
+    "eligibility": "{\"sector\":[\"corporates\"]}"
+   }
+  },
+  {
+   "id": 999,
+   "public_url": "jobs/web-application-developer-corivaone-1816920",
+   "title": "Remote Support Executive",
+   "type": "jobs",
+   "subtype": "jobs",
+   "status": "LIVE",
+   "visibility": "public",
+   "updated_at": "2026-11-18T01:10:08+05:30",
+   "approved_date": "2026-11-18 00:44:36 GMT+0530",
+   "end_date": "2026-12-01T00:00:00+05:30",
+   "region": "online",
+   "seo_url": "https://unstop.com/jobs/web-application-developer-corivaone-1816920",
+   "details": "<p>We are looking for a skilled and experienced <strong>Web Application Developer</strong> with a minimum of 3 years of hands-on experience in developing, maintaining, and optimizing dynamic web applications.</p>\n<p>The ideal candidate should have strong technical expertise in HTML5, CSS3, JavaScript, jQuery, Bootstrap, and PHP, along with experience in responsive UI development, API integration, website performance optimization, and web analytics tools.</p>\n<p>The candidate will be responsible for developing user-friendly, responsive, and high-performance web applications while ensuring code quality, functionality, and cross-browser compatibility.</p>\n<p><strong>Key Roles &amp; Responsibili",
+   "organisation": {
+    "id": 2114598,
+    "name": "Corivaone"
+   },
+   "isPaid": false,
+   "locations": [
+    {
+     "city": "London",
+     "state": "England",
+     "country": "United Kingdom"
+    }
+   ],
+   "jobDetail": {
+    "entity_id": 1816920,
+    "max_salary": 800000,
+    "currency": "fa-rupee",
+    "locations": [
+     "London"
+    ],
+    "type": "in_office",
+    "min_salary": 600000,
+    "show_salary": 1,
+    "min_experience": null,
+    "max_experience": null,
+    "timing": "full_time",
+    "paid_unpaid": "paid",
+    "pay_in": "annually",
+    "not_disclosed": false
+   },
+   "required_skills": [
+    {
+     "skill_name": "JavaScript"
+    },
+    {
+     "skill_name": "PHP"
+    },
+    {
+     "skill_name": "HTML"
+    },
+    {
+     "skill_name": "CSS"
+    }
+   ],
+   "regnRequirements": {
+    "work_location_type": "city",
+    "eligibility": "{\"sector\":[\"corporates\"]}"
+   }
+  }
+ ]
+}

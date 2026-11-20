@@ -1,0 +1,142 @@
+/* 3D map (web/src/map). Glass look on the card's dark gradient; tokens come from styles/design.css. */
+.jm-root {
+  position: absolute;
+  inset: 0;
+  overflow: hidden;
+  background: transparent;
+  isolation: isolate;
+}
+.jm-canvas {
+  position: absolute;
+  inset: 0;
+  outline: none;
+  touch-action: none;
+}
+.jm-canvas:focus-visible {
+  outline: 2px solid var(--saf);
+  outline-offset: -4px;
+}
+
+/* Hover tooltip: glass. Positioned by transform from JobMap (no layout reads). */
+.jm-tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 3;
+  max-width: 260px;
+  padding: 10px 14px;
+  border: 1px solid var(--line2);
+  border-radius: 12px;
+  background: rgb(18 15 26 / 0.93);
+  color: var(--tx);
+  font: 400 13px/1.4 var(--sans);
+  pointer-events: none;
+  will-change: transform;
+}
+.jm-tip[hidden] {
+  display: none;
+}
+.jm-tip__title {
+  font-size: 15px;
+  font-weight: 600;
+  overflow-wrap: anywhere;
+}
+.jm-tip__count {
+  color: var(--tx2);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.jm-tip__roles {
+  margin: 6px 0 0;
+  padding: 6px 0 0;
+  list-style: none;
+  border-top: 1px solid var(--line);
+}
+.jm-tip__roles li {
+  display: flex;
+  justify-content: space-between;
+  gap: 12px;
+  font-size: 12.5px;
+}
+.jm-tip__n {
+  color: var(--saf);
+  font-family: var(--mono);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+
+/* Back to all India (hidden in the map card, which has its own city panel). */
+.jm-back {
+  position: absolute;
+  top: 16px;
+  z-index: 2;
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+}
+@media (pointer: coarse) {
+  .jm-back {
+    min-height: 44px;
+  }
+}
+
+/* Zoom and reset */
+.jm-controls {
+  position: absolute;
+  right: 20px;
+  bottom: 20px;
+  z-index: 2;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border: 1px solid var(--line2);
+  border-radius: 14px;
+  background: rgb(18 15 26 / 0.9);
+}
+.jm-controls button {
+  display: grid;
+  place-items: center;
+  width: 44px;
+  height: 44px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--tx2);
+  cursor: pointer;
+  transition: background-color 0.2s, color 0.2s;
+}
+.jm-controls button + button {
+  border-top: 1px solid var(--line);
+}
+@media (hover: hover) and (pointer: fine) {
+  .jm-controls button:hover {
+    background: rgb(255 255 255 / 0.06);
+    color: var(--tx);
+  }
+}
+.jm-controls button:active {
+  background: rgb(255 255 255 / 0.1);
+}
+.jm-controls button:focus-visible {
+  outline: 2px solid var(--saf);
+  outline-offset: -4px;
+}
+@media (max-width: 760px) {
+  .jm-controls {
+    right: 12px;
+    bottom: 34px;
+  }
+}
+
+.jm-nogl {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  margin: 0;
+  padding: 24px;
+  color: var(--tx2);
+  font-size: 15px;
+  text-align: center;
+  text-wrap: balance;
+}

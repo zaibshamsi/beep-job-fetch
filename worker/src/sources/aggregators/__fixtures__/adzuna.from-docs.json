@@ -1,0 +1,36 @@
+{
+  "_note": "from-docs: shape copied from developer.adzuna.com/docs/search sample response; values and the India locations are illustrative. No Adzuna key was available to record a live response.",
+  "__CLASS__": "Adzuna::API::Response::JobSearchResults",
+  "results": [
+    {
+      "id": "129698749",
+      "title": "Graduate Trainee - Software Engineering",
+      "description": "Join our campus hiring programme. Freshers with a B.E./B.Tech in CS may apply ...",
+      "created": "2026-11-10T18:07:39Z",
+      "redirect_url": "https://www.adzuna.in/land/ad/129698749?se=abc&v=123",
+      "salary_min": 300000,
+      "salary_max": 400000,
+      "salary_is_predicted": "1",
+      "contract_type": "permanent",
+      "contract_time": "full_time",
+      "latitude": 12.97,
+      "longitude": 77.59,
+      "location": {
+        "__CLASS__": "Adzuna::API::Response::Location",
+        "area": ["India", "Karnataka", "Bangalore"],
+        "display_name": "Bangalore, Karnataka"
+      },
+      "category": { "__CLASS__": "Adzuna::API::Response::Category", "label": "IT Jobs", "tag": "it-jobs" },
+      "company": { "__CLASS__": "Adzuna::API::Response::Company", "display_name": "Example Systems Pvt Ltd" }
+    },
+    {
+      "id": "129698750",
+      "title": "Senior Manager - Operations",
+      "description": "10 years of experience required.",
+      "created": "2026-11-09T08:00:00Z",
+      "redirect_url": "https://www.adzuna.in/land/ad/129698750",
+      "location": { "area": ["India", "Delhi"], "display_name": "Delhi" },
+      "company": { "display_name": "Other Corp" }
+    }
+  ]
+}

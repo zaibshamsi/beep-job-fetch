@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="utf-8"?>
+<sitemapindex xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://www.sitemaps.org/schemas/sitemap/0.9 http://www.sitemaps.org/schemas/sitemap/0.9/sitemap.xsd" xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <sitemap>
+    <loc>https://www.accenture.com/ae-en/jobpostings-sitemap.xml</loc>
+  </sitemap>
+<sitemap>
+    <loc>https://www.accenture.com/ae-en/sitemap.xml</loc>
+  </sitemap>
+<sitemap>
+    <loc>https://www.accenture.com/ar-es/jobpostings-sitemap.xml</loc>
+  </sitemap>
+<sitemap>
+    <loc>https://www.accenture.com/ar-es/sitemap.xml</loc>
+  </sitemap>
+<sitemap>
+    <loc>https://www.accenture.com/at-de/jobpostings-sitemap.xml</loc>
+  </sitemap>
+<sitemap>
+    <loc>https://www.accenture.com/at-de/sitemap.xml</loc>
+  </sitemap>
+</sitemapindex>

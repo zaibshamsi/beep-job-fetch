@@ -1,0 +1,65 @@
+/* "Filters" disclosure in the map page side panel. Fields use the shared .field and select styles. */
+.mp-filters {
+  border-bottom: 1px solid var(--line);
+}
+.mp-filters__toggle {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  width: 100%;
+  min-height: 44px;
+  padding: 0 22px;
+  font-size: 13px;
+  color: var(--tx2);
+  text-align: left;
+  transition: color 0.2s;
+}
+.mp-filters__toggle:hover {
+  color: var(--tx);
+}
+.mp-filters__toggle svg:first-child {
+  color: var(--saf);
+}
+.mp-filters__count {
+  min-width: 20px;
+  padding: 1px 6px;
+  border-radius: 999px;
+  background: var(--grad);
+  color: #1b0e10;
+  font-size: 11px;
+  font-weight: 500;
+  text-align: center;
+}
+.mp-filters__chev {
+  margin-left: auto;
+  transition: transform 0.3s var(--ease);
+}
+.mp-filters__chev[data-open] {
+  transform: rotate(180deg);
+}
+.mp-filters__region[hidden] {
+  display: none;
+}
+.mp-filters__body {
+  display: grid;
+  gap: 14px;
+  padding: 4px 22px 18px;
+}
+.mp-filters__pair {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 12px;
+}
+@media (max-width: 420px) {
+  .mp-filters__pair {
+    grid-template-columns: 1fr;
+  }
+}
+.mp-filters .field > label {
+  font-size: 11px;
+}
+.mp-filters select {
+  min-height: 40px;
+  padding: 8px 12px;
+  font-size: 13.5px;
+}

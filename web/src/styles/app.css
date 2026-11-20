@@ -1,0 +1,9 @@
+/*
+ * App-level layout helpers on top of design.css. Colours, type and primitives live in design.css; the rules
+ * for using them are in web/DESIGN.md. Do not add colours here.
+ */
+@import './design.css';
+
+#root {
+  min-height: 100dvh;
+}

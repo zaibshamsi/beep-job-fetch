@@ -1,0 +1,87 @@
+{
+  "jobCount": 4,
+  "hasMore": false,
+  "nextCursor": null,
+  "jobs": [
+    {
+      "id": 162979,
+      "url": "https://jobicy.com/jobs/162979-platform-engineer-compute",
+      "jobSlug": "162979-platform-engineer-compute",
+      "jobTitle": "Platform Engineer - Compute",
+      "companyName": "Supabase",
+      "companyLogo": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2026/06/611d3bfa-221.png",
+      "jobIndustry": [
+        "DevOps & Infrastructure"
+      ],
+      "jobType": [
+        "Full-Time"
+      ],
+      "jobGeo": "Anywhere",
+      "jobLevel": "Any",
+      "jobExcerpt": "About the Role We are seeking a platform engineer to join our Compute team. This team owns the critical systems that power project provisioning, scaling, and the compute that our users rely on every day. You’ll work on the core platform that ensures Supabase can seamlessly scaleacross multiple regions, handle high-volume workloads, and providelow-latency, highly&hellip;",
+      "jobDescription": "<h3><strong>About the Role</strong></h3>\n<p>We are seeking a platform engineer to join our Compute team. This team owns the critical systems that power project provisioning, scaling, and the compute that our users rely on every day.</p>\n<p>You’ll work on the core platform that ensures <a href=\"https://jobicy.com/company/supabase\" target=\"_blank\" rel=\"noopener\">Supabase</a> can seamlessly scale<br>across multiple regions, handle high-volume workloads, and provide<br>low-latency, highly available compute services.</p>\n<p>You'll design, build, and operate systems that are both robust and highly<br>automated — enabling us to provision new projects reliably at scale,<br>optimize resource utilizat",
+      "pubDate": "2026-11-17T13:39:12+00:00"
+    },
+    {
+      "id": 155566,
+      "url": "https://jobicy.com/jobs/155566-international-audio-video-remote-soninke-interpreter",
+      "jobSlug": "155566-international-audio-video-remote-soninke-interpreter",
+      "jobTitle": "International Audio/Video Remote Soninke Interpreter",
+      "companyName": "Language Services Associates",
+      "companyLogo": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2025/06/2a0ea3d8-221.png",
+      "jobIndustry": [
+        "Customer Support & Success"
+      ],
+      "jobType": [
+        "Contract"
+      ],
+      "jobGeo": "Anywhere",
+      "jobLevel": "Any",
+      "jobExcerpt": "Overview: As an Internationally based audio/video interpreter for Soninke and French or Arabic in LSA’s network of Independently Contracted Interpreters, you are responsible for handling telephone calls on demand and facilitating language communication for the Limited English Proficient (LEP) community in a variety of settings. Language Services Associates is continuously accepting qualified interpreters!   Responsibilities:&hellip;",
+      "jobDescription": "<p><strong>Overview: </strong></p>\r\n<p>As an Internationally based audio/video interpreter for Soninke and French or Arabic in LSA’s network of Independently Contracted Interpreters, you are responsible for handling telephone calls on demand and facilitating language communication for the Limited English Proficient (LEP) community in a variety of settings. Language Services Associates is continuously accepting qualified interpreters! </p>\r\n<p>  </p>\r\n<p><strong>Responsibilities: </strong></p>\r\n<p>·         Provide effective audio and video interpreting through a web based platform </p>\r\n<p>·         Answer inbound calls in a timely manner </p>\r\n<p>·         Provide superior customer service ",
+      "pubDate": "2026-11-17T03:25:15+00:00"
+    },
+    {
+      "id": 162561,
+      "url": "https://jobicy.com/jobs/162561-senior-product-manager-fraud-risk",
+      "jobSlug": "162561-senior-product-manager-fraud-risk",
+      "jobTitle": "Senior Product Manager, Fraud & Risk",
+      "companyName": "Tala",
+      "companyLogo": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2022/02/a788b3a65c0fc717303f0b5b049cc7e6.jpeg",
+      "jobIndustry": [
+        "Product & Operations"
+      ],
+      "jobType": [
+        "Full-Time"
+      ],
+      "jobGeo": "APAC",
+      "jobLevel": "Senior",
+      "jobExcerpt": "About Tala Tala is the AI-native credit infrastructure that connects global capital to the global majority. We combine proprietary risk intelligence with an expanding network of capital and distribution partners to power credit access at scale. To date, Tala has distributed more than $9 billion in capital to more than 14 million customers across Africa,&hellip;",
+      "jobDescription": "<p><strong>About <a href=\"https://jobicy.com/company/tala\" target=\"_blank\" rel=\"noopener\">Tala</a></strong></p>\n<p>Tala is the AI-native credit infrastructure that connects global capital to the global majority. We combine proprietary risk intelligence with an expanding network of capital and distribution partners to power credit access at scale. To date, Tala has distributed more than $9 billion in capital to more than 14 million customers across Africa, Latin America, and Asia, building the definitive contextual dataset on thin-file borrowers in emerging markets. Tala is now converting that foundation into shared infrastructure that partners, capital providers, and ecosystems can build on.",
+      "pubDate": "2026-11-16T11:52:12+00:00"
+    },
+    {
+      "id": 161952,
+      "url": "https://jobicy.com/jobs/161952-field-intelligence-analyst-tokyo",
+      "jobSlug": "161952-field-intelligence-analyst-tokyo",
+      "jobTitle": "Field Intelligence Analyst (Tokyo)",
+      "companyName": "Sayari",
+      "companyLogo": "https://jobicy.com/data/server-nyc0409/galaxy/mercury/2026/11/523c12b37153-221.webp",
+      "jobIndustry": [
+        "Data Science & Analytics"
+      ],
+      "jobType": [
+        "Full-Time"
+      ],
+      "jobGeo": "Japan",
+      "jobLevel": "Any",
+      "jobExcerpt": "About Sayari: Sayari is the judgment infrastructure for trustworthy AI in economic security and commercial risk. The Sayari Commercial World Model resolves 11.7B+ primary-source records from 250+ jurisdictions forming the ground truth of global commerce. A Judgment Ontology, encoding over a decade of investigative tradecraft, and Superconductor, an agentic orchestration platform, deliver AI that reasons&hellip;",
+      "jobDescription": "<h3><strong>About <a href=\"https://jobicy.com/company/sayari\" target=\"_blank\" rel=\"noopener\">Sayari</a>: </strong></h3>\r\n<p>Sayari is the judgment infrastructure for trustworthy AI in economic security and commercial risk. The Sayari Commercial World Model resolves 11.7B+ primary-source records from 250+ jurisdictions forming the ground truth of global commerce. A Judgment Ontology, encoding over a decade of investigative tradecraft, and Superconductor, an agentic orchestration platform, deliver AI that reasons like an expert analyst, shows its work, and traces every finding to its source. Trusted by U.S. Customs and Border Protection, HM Revenue &amp; Customs, and Fortune 500 enterprises, S",
+      "pubDate": "2026-11-13T15:03:53+00:00",
+      "salaryMin": 7800000,
+      "salaryMax": 11900000,
+      "salaryCurrency": "USD",
+      "salaryPeriod": "yearly"
+    }
+  ]
+}

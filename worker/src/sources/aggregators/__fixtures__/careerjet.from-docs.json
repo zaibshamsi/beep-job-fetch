@@ -1,0 +1,30 @@
+{
+  "_note": "from-docs: field list of the Careerjet v4 API documentation (careerjet.com/partners/api); values are illustrative. No Careerjet key was available to record a live response.",
+  "type": "JOBS",
+  "hits": 2,
+  "pages": 1,
+  "jobs": [
+    {
+      "title": "Software Engineer Intern",
+      "company": "Acme Labs",
+      "date": "Tue, 10 Nov 2026 09:30:00 GMT",
+      "description": "6-month <b>internship</b> for final year students ...",
+      "locations": "Pune, Maharashtra",
+      "salary": "INR 15,000 per month",
+      "salary_currency_code": "INR",
+      "salary_min": 15000,
+      "salary_max": 15000,
+      "salary_type": "M",
+      "url": "https://www.careerjet.co.in/jobad/in1a2b3c4d5e",
+      "site": "example-board.in"
+    },
+    {
+      "title": "Principal Engineer",
+      "company": "Acme Labs",
+      "date": "Tue, 10 Nov 2026 09:30:00 GMT",
+      "description": "Senior role",
+      "locations": "Pune",
+      "url": "https://www.careerjet.co.in/jobad/in9z8y7x6w5v"
+    }
+  ]
+}

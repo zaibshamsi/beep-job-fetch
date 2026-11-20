@@ -1,0 +1,18 @@
+{
+  "name": "@beep/ai",
+  "version": "0.1.0",
+  "private": true,
+  "type": "module",
+  "main": "src/index.ts",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "dependencies": {
+    "@beep/shared": "*",
+    "@langchain/core": "^1.4.1",
+    "@langchain/langgraph": "^1.7.5",
+    "@langchain/openai": "^1.8.4",
+    "@typesafe-ai/sdk": "^0.7.0",
+    "openai": "^7.59.0"
+  }
+}

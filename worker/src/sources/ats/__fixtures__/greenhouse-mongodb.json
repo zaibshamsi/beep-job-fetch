@@ -1,0 +1,470 @@
+{
+ "jobs": [
+  {
+   "absolute_url": "https://www.mongodb.com/careers/job/?gh_jid=7318466",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": true
+    }
+   ],
+   "internal_job_id": 3271434,
+   "location": {
+    "name": "Bengaluru"
+   },
+   "metadata": [
+    {
+     "id": 22194060,
+     "name": "Position ID",
+     "value": "N/A",
+     "value_type": "short_text"
+    },
+    {
+     "id": 24918,
+     "name": "Department ID",
+     "value": "D41350-Sales Dev(SDR)",
+     "value_type": "single_select"
+    },
+    {
+     "id": 22194061,
+     "name": "Team",
+     "value": "T10212-Sales Development RoW",
+     "value_type": "single_select"
+    },
+    {
+     "id": 4914027,
+     "name": "Region",
+     "value": "APAC",
+     "value_type": "single_select"
+    },
+    {
+     "id": 4137836,
+     "name": "Working Model Eligibility",
+     "value": [
+      "2-Flexible"
+     ],
+     "value_type": "multi_select"
+    },
+    {
+     "id": 4914029,
+     "name": "Job Level",
+     "value": "IC - Professional",
+     "value_type": "single_select"
+    },
+    {
+     "id": 24109,
+     "name": "Employment Type",
+     "value": "Full-time",
+     "value_type": "single_select"
+    },
+    {
+     "id": 1073551,
+     "name": "Job Type",
+     "value": "Pipeline",
+     "value_type": "single_select"
+    },
+    {
+     "id": 988684,
+     "name": "JD Link",
+     "value": "tbd.com",
+     "value_type": "url"
+    },
+    {
+     "id": 5525802,
+     "name": "Baseline Budgeted Salary",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 5525816,
+     "name": "Other Large Market Budgeted Salary",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 13324394,
+     "name": "Job Post Range (United States)",
+     "value": {
+      "unit": "USD",
+      "max_value": "0.01",
+      "min_value": "0.01"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 40497768,
+     "name": "Job Post Range (Canada)",
+     "value": {
+      "unit": null,
+      "max_value": "0.0",
+      "min_value": "0.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 57694516,
+     "name": "Job Post Range (Poland)",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 64002488,
+     "name": "Job Post Range (Italy)",
+     "value": null,
+     "value_type": "currency_range"
+    }
+   ],
+   "id": 7318466,
+   "updated_at": "2026-11-16T09:27:51-05:00",
+   "requisition_id": "425668",
+   "title": "Account Development Representative",
+   "company_name": "MongoDB",
+   "first_published": "2026-07-22T09:12:25-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;p&gt;An Account Development Representative at MongoDB is the starting point for building a serious career in technology sales.&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;This role is the foundation of our sales organization. You will partner closely with Account Executives to identify new opportunities within strategic accounts, helping drive meaningful pipeline and long-term customer growth.&amp;nbsp;&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;From day one, you will learn and apply structured sales frameworks including MEDDIC qualification, account mapping, multi-threading strategies, and value-based discovery. You will develop technical fluency across modern application architectures, cloud infrastructure, and database technologies, gaining real exposure to how complex software solutions are positioned and sold.&lt;br&gt;&lt;br&gt;ADRs at MongoDB do more than generate meetings. They help shape early deal strategy, apply MEDDIC principles to qualify real business problems, and stay engaged through the scoping phase to maintain strong deal momentum&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;We invest heavily in structured onboarding, ongoing enablement, and consistent 1:1 coaching. Our ADR team is one of the primary talent pipelines into Account Executive and other revenue roles across MongoDB, with clear, performance-based progression paths.&lt;/p&gt;\n&lt;p&gt;We believe skill development accelerates when teams collaborate in person.&lt;/p&gt;\n&lt;p&gt;We are looking to speak to candidates who are based in Bengaluru for our hybrid working model.&lt;/p&gt;\n&lt;h3&gt;What you’ll do&lt;/h3&gt;\n&lt;ul&gt;\n&lt;li&gt;Own outbound prospecting within a defined set of strategic accounts, working closely with your aligned Account Executives and Sales stakeholders&lt;/li&gt;\n&lt;li&gt;Research organizations to uncove ",
+   "departments": [
+    {
+     "id": 38867,
+     "name": "Sales Development",
+     "child_ids": [],
+     "parent_id": 336792
+    }
+   ],
+   "offices": [
+    {
+     "id": 26756,
+     "name": "Bengaluru",
+     "location": "Bengaluru, Karnataka, India",
+     "child_ids": [],
+     "parent_id": 23659
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://www.mongodb.com/careers/job/?gh_jid=8266013",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": true
+    }
+   ],
+   "internal_job_id": 3576550,
+   "location": {
+    "name": "Bengaluru; Gurugram"
+   },
+   "metadata": [
+    {
+     "id": 22194060,
+     "name": "Position ID",
+     "value": "10012059",
+     "value_type": "short_text"
+    },
+    {
+     "id": 24918,
+     "name": "Department ID",
+     "value": "D41650-Scaled Customer Success",
+     "value_type": "single_select"
+    },
+    {
+     "id": 22194061,
+     "name": "Team",
+     "value": "T10236-Scaled CS",
+     "value_type": "single_select"
+    },
+    {
+     "id": 4914027,
+     "name": "Region",
+     "value": "APAC",
+     "value_type": "single_select"
+    },
+    {
+     "id": 4137836,
+     "name": "Working Model Eligibility",
+     "value": [
+      "2-Flexible"
+     ],
+     "value_type": "multi_select"
+    },
+    {
+     "id": 4914029,
+     "name": "Job Level",
+     "value": "Professional - IC",
+     "value_type": "single_select"
+    },
+    {
+     "id": 24109,
+     "name": "Employment Type",
+     "value": "Full-time",
+     "value_type": "single_select"
+    },
+    {
+     "id": 1073551,
+     "name": "Job Type",
+     "value": "Standard",
+     "value_type": "single_select"
+    },
+    {
+     "id": 988684,
+     "name": "JD Link",
+     "value": null,
+     "value_type": "url"
+    },
+    {
+     "id": 5525802,
+     "name": "Baseline Budgeted Salary",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 5525816,
+     "name": "Other Large Market Budgeted Salary",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 13324394,
+     "name": "Job Post Range (United States)",
+     "value": {
+      "unit": "INR",
+      "max_value": "0.0",
+      "min_value": "0.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 40497768,
+     "name": "Job Post Range (Canada)",
+     "value": {
+      "unit": "INR",
+      "max_value": "0.0",
+      "min_value": "0.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 57694516,
+     "name": "Job Post Range (Poland)",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 64002488,
+     "name": "Job Post Range (Italy)",
+     "value": null,
+     "value_type": "currency_range"
+    }
+   ],
+   "id": 8266013,
+   "updated_at": "2026-11-16T09:27:51-05:00",
+   "requisition_id": "3273576550",
+   "title": "Digital Success Manager",
+   "company_name": "MongoDB",
+   "first_published": "2026-10-15T11:10:28-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;p&gt;MongoDB’s mission is to empower innovators to create, transform, and disrupt industries by unleashing the power of software and data. Our Customer Success organisation combines business and technical expertise to help customers realise the full potential of their investment in MongoDB.&lt;/p&gt;\n&lt;p&gt;This role sits within our Digital Customer Success Strategy team. This team exists to help manage and evolve how we serve customers through digital and agentic experiences. The team helps MongoDB deliver a consistent, personalised and relevant experience using data, lifecycle programmes, automation, and human judgement where it matters most.&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;We are looking to speak to candidates who are based in Gurugram for our hybrid working model.&lt;/p&gt;\n&lt;h3&gt;The Role&lt;/h3&gt;\n&lt;p&gt;We are looking for a Digital Success Manager to foster high-impact customer relationships at scale by leveraging data, automation, and digital channels to deliver tailored, value-led experiences. Blending strategic insight with digital programmes, you will help advance our Digital-First strategy.&lt;/p&gt;\n&lt;p&gt;Serving as a subject matter expert across a high volume of accounts, you will build deep knowledge of your assigned region, analyzing retention trends and uncovering new ways to add value. You will drive customer outcome strategies using scalable digital channels, automated health-score triggers, and 1:many outreach, stepping in as the human-in-the-loop when judgment or nuance is needed to define the next best action.&lt;/p&gt;\n&lt;p&gt;Because this role is still evolving, we seek an entrepreneurial self-starter who is curious, driven, and excited to take initiative, and who uses AI hands-on to accelerate their work, conduct research, and manag ",
+   "departments": [
+    {
+     "id": 267356,
+     "name": "Scaled Customer Success",
+     "child_ids": [],
+     "parent_id": 268135
+    }
+   ],
+   "offices": [
+    {
+     "id": 65909,
+     "name": "Gurugram",
+     "location": "Gurugram, Haryana, India",
+     "child_ids": [],
+     "parent_id": 23659
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": null
+  },
+  {
+   "absolute_url": "https://www.mongodb.com/careers/job/?gh_jid=8209134",
+   "data_compliance": [
+    {
+     "type": "gdpr",
+     "requires_consent": false,
+     "requires_processing_consent": false,
+     "requires_retention_consent": false,
+     "retention_period": null,
+     "demographic_data_consent_applies": true
+    }
+   ],
+   "internal_job_id": 3552820,
+   "location": {
+    "name": "Austin; New York City; San Francisco"
+   },
+   "metadata": [
+    {
+     "id": 22194060,
+     "name": "Position ID",
+     "value": "TBC",
+     "value_type": "short_text"
+    },
+    {
+     "id": 24918,
+     "name": "Department ID",
+     "value": "D26100-ENG Interns",
+     "value_type": "single_select"
+    },
+    {
+     "id": 22194061,
+     "name": "Team",
+     "value": "268-ENG Interns",
+     "value_type": "single_select"
+    },
+    {
+     "id": 4914027,
+     "name": "Region",
+     "value": "North America",
+     "value_type": "single_select"
+    },
+    {
+     "id": 4137836,
+     "name": "Working Model Eligibility",
+     "value": [
+      "1-In Office"
+     ],
+     "value_type": "multi_select"
+    },
+    {
+     "id": 4914029,
+     "name": "Job Level",
+     "value": "Intern",
+     "value_type": "single_select"
+    },
+    {
+     "id": 24109,
+     "name": "Employment Type",
+     "value": "Intern",
+     "value_type": "single_select"
+    },
+    {
+     "id": 1073551,
+     "name": "Job Type",
+     "value": "Campus Intern",
+     "value_type": "single_select"
+    },
+    {
+     "id": 988684,
+     "name": "JD Link",
+     "value": null,
+     "value_type": "url"
+    },
+    {
+     "id": 5525802,
+     "name": "Baseline Budgeted Salary",
+     "value": {
+      "unit": "USD",
+      "max_value": "112320.0",
+      "min_value": "106160.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 5525816,
+     "name": "Other Large Market Budgeted Salary",
+     "value": {
+      "unit": "USD",
+      "max_value": "95479.0",
+      "min_value": "91936.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 13324394,
+     "name": "Job Post Range (United States)",
+     "value": {
+      "unit": "USD",
+      "max_value": "123552.0",
+      "min_value": "86528.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 40497768,
+     "name": "Job Post Range (Canada)",
+     "value": {
+      "unit": null,
+      "max_value": "0.0",
+      "min_value": "0.0"
+     },
+     "value_type": "currency_range"
+    },
+    {
+     "id": 57694516,
+     "name": "Job Post Range (Poland)",
+     "value": null,
+     "value_type": "currency_range"
+    },
+    {
+     "id": 64002488,
+     "name": "Job Post Range (Italy)",
+     "value": null,
+     "value_type": "currency_range"
+    }
+   ],
+   "id": 8209134,
+   "updated_at": "2026-11-16T09:27:51-05:00",
+   "requisition_id": "426438",
+   "title": "2027 - Software Engineering Intern, AMER",
+   "company_name": "MongoDB",
+   "first_published": "2026-10-23T08:57:16-04:00",
+   "language": "en",
+   "application_deadline": null,
+   "content": "&lt;p&gt;We’re seeking curious minds like yours to collaborate with full-time engineers and cross functional teammates, learn development standard methodologies, and gain practical software engineering experience.&amp;nbsp;&lt;/p&gt;\n&lt;p&gt;Software engineering interns are fully integrated into software engineering teams across our Product and Technology organization. Interns spend their summer pushing production-level code to make lasting contributions across MongoDB’s products and services for our internal teams, external customers, and developer end users.&lt;/p&gt;\n&lt;p&gt;This is a 12-week internship starting in May or June 2027.&lt;/p&gt;\n&lt;p&gt;&lt;strong&gt;What we are looking for in you (qualifications)&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;In the process of receiving a Bachelor’s or Master&#39;s degree in Computer Science, Computer Engineering, or a related field.&lt;/li&gt;\n&lt;li&gt;Have a foundation in computer science theory, with proficiencies in data structures, algorithms, and software design.&lt;/li&gt;\n&lt;li&gt;Fluent in any one of the following programming languages: Java, Python, Go, C++, Javascript, Node.js - or a comparable object-oriented programming language.&lt;/li&gt;\n&lt;li&gt;Have a minimum of one quarter/semester remaining in university studies after the internship concludes. Graduation date in Fall 2027, Spring 2028, Summer 2028, Fall 2028, Spring 2029 or Summer 2029.&lt;/li&gt;\n&lt;li&gt;Must be authorized to work in the United States.&amp;nbsp;&lt;/li&gt;\n&lt;/ul&gt;\n&lt;p&gt;&lt;strong&gt;What you&#39;ll find at MongoDB&lt;/strong&gt;&lt;/p&gt;\n&lt;ul&gt;\n&lt;li&gt;Authentic Culture: A workplace where you are encouraged to bring your whole self to work, we believe that Embracing the Power of Differences is the best way to  ",
+   "departments": [
+    {
+     "id": 38811,
+     "name": "Intern",
+     "child_ids": [],
+     "parent_id": 23782
+    }
+   ],
+   "offices": [
+    {
+     "id": 3964,
+     "name": "Austin",
+     "location": "Austin, TX, United States",
+     "child_ids": [],
+     "parent_id": 23657
+    },
+    {
+     "id": 3960,
+     "name": "New York City",
+     "location": "New York, NY, United States",
+     "child_ids": [],
+     "parent_id": 23657
+    },
+    {
+     "id": 17687,
+     "name": "San Francisco ",
+     "location": "San Francisco, CA, United States",
+     "child_ids": [],
+     "parent_id": 23657
+    }
+   ],
+   "ai_disclaimer": null,
+   "include_ai_disclaimer": false,
+   "ai_opt_out_request_url": null
+  }
+ ]
+}

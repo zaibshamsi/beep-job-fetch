@@ -1,0 +1,127 @@
+/* Search form, parsed-by hint and the chips row (map page side panel). Ported from the design mock (.search, .chips). */
+.mp-search {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  height: 48px;
+  padding: 0 10px 0 14px;
+  border: 1px solid var(--line2);
+  border-radius: 14px;
+  background: rgb(0 0 0 / 0.25);
+  transition: border-color 0.3s, box-shadow 0.3s;
+}
+.mp-search:focus-within {
+  border-color: rgb(255 178 63 / 0.6);
+  box-shadow: 0 0 0 4px rgb(255 178 63 / 0.1);
+}
+.mp-search__ico {
+  flex: none;
+  color: var(--saf);
+}
+/* beats the shared input rule (0,1,1): the form draws the border, the input is bare */
+.mp-search .mp-search__input {
+  flex: 1;
+  min-width: 0;
+  min-height: 0;
+  height: 100%;
+  padding: 0;
+  border: 0;
+  border-radius: 0;
+  background: none;
+  box-shadow: none;
+  color: var(--tx);
+  font: 14px var(--sans);
+  -webkit-appearance: none;
+  appearance: none;
+}
+.mp-search .mp-search__input:focus {
+  border: 0;
+  box-shadow: none;
+}
+.mp-search__input::-webkit-search-cancel-button,
+.mp-search__input::-webkit-search-decoration {
+  display: none;
+}
+.mp-search kbd {
+  flex: none;
+}
+.mp-search .mp-spinner {
+  color: var(--saf);
+  margin-right: 6px;
+}
+.mp-search__clear {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 28px;
+  height: 28px;
+  border-radius: 50%;
+  color: var(--tx2);
+  transition: color 0.2s, background 0.2s;
+}
+.mp-search__clear:hover {
+  color: var(--tx);
+  background: rgb(255 255 255 / 0.08);
+}
+@media (pointer: coarse) {
+  .mp-search__clear {
+    width: 36px;
+    height: 36px;
+  }
+}
+@media (max-width: 640px) {
+  .mp-search .mp-search__input {
+    font-size: 16px;
+  }
+}
+
+.mp-hint {
+  min-height: 0;
+  margin: 0;
+  font: 500 11.5px var(--mono);
+  letter-spacing: 0.06em;
+  color: var(--tx3);
+}
+.mp-hint:not(:empty) {
+  margin-top: 8px;
+}
+.mp-hint:has(.visually-hidden:only-child) {
+  margin-top: 0;
+}
+.mp-hint > i {
+  display: inline-block;
+  width: 6px;
+  height: 6px;
+  margin-right: 8px;
+  border-radius: 50%;
+  background: var(--jade);
+  vertical-align: 1px;
+}
+.mp-hint__err {
+  color: var(--err);
+}
+
+.mp-chips {
+  margin-top: 12px;
+}
+.mp-chips .chip {
+  min-height: 32px;
+  cursor: pointer;
+}
+.mp-chips .chip.on svg {
+  flex: none;
+  opacity: 0.7;
+}
+.mp-chip--fam i {
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+  box-shadow: 0 0 0 1.5px rgb(0 0 0 / 0.35);
+}
+@media (pointer: coarse) {
+  .mp-chips .chip {
+    min-height: 40px;
+    padding-inline: 14px;
+  }
+}

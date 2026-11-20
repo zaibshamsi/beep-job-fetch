@@ -1,0 +1,568 @@
+/*
+ * 2D map and its overlays. Ported from the #app view of docs/design/claude-design-reference.html (#map, .bc, .arcs,
+ * .cityp, .remote, .legend, .zoom, .tip). Classes are prefixed m2- so they cannot collide with the landing page.
+ */
+.m2-card {
+  position: absolute;
+  inset: 0;
+}
+.m2 {
+  position: absolute;
+  inset: 0;
+  outline: none;
+}
+.m2:focus-visible {
+  outline: 2px solid var(--saf);
+  outline-offset: -4px;
+  border-radius: 24px;
+}
+.m2__svg {
+  display: block;
+  width: 100%;
+  height: 100%;
+  cursor: grab;
+  touch-action: none;
+  user-select: none;
+  -webkit-user-select: none;
+}
+.m2__svg:active {
+  cursor: grabbing;
+}
+.m2__state {
+  fill: none;
+  stroke: rgb(255 255 255 / 0.1);
+  stroke-width: 0.6;
+  stroke-linejoin: round;
+}
+.m2__coast {
+  fill: none;
+  stroke-width: 1.4;
+  stroke-linejoin: round;
+  vector-effect: non-scaling-stroke;
+  opacity: 0.8;
+}
+
+/* ---------------------------------------------------------------- beacons */
+.m2-bc {
+  cursor: pointer;
+  outline: none;
+  transition: opacity 0.5s;
+}
+.m2-bc.is-zero {
+  opacity: 0.12;
+  pointer-events: none;
+}
+.m2-bc.is-dim {
+  opacity: 0.18;
+}
+.m2-bc.is-dim .m2-lb {
+  opacity: 0 !important;
+}
+.m2-bc circle {
+  pointer-events: none;
+}
+.m2-bc .m2-core,
+.m2-bc .m2-hit {
+  pointer-events: all;
+}
+.m2-hit {
+  fill: transparent;
+}
+.m2-bc:focus-visible .m2-hit {
+  stroke: var(--saf);
+  stroke-width: 2;
+  vector-effect: non-scaling-stroke;
+}
+.m2-k {
+  transform: scale(var(--k, 1));
+}
+.m2-bs {
+  animation: m2-pop 1s var(--ease) backwards;
+}
+@keyframes m2-pop {
+  from {
+    transform: scale(0);
+    opacity: 0;
+  }
+}
+.m2-heat,
+.m2-rip,
+.m2-core {
+  transition: r 0.6s var(--ease);
+}
+.m2-rip {
+  fill: none;
+  stroke: var(--saf);
+  stroke-width: 1.2;
+  animation: m2-rip 2.8s ease-out infinite;
+}
+.m2-bc.is-sel .m2-rip {
+  stroke: #fff;
+}
+@keyframes m2-rip {
+  from {
+    transform: scale(1);
+    opacity: 0.8;
+  }
+  to {
+    transform: scale(2.8);
+    opacity: 0;
+  }
+}
+.m2-core {
+  transition: transform 0.4s var(--spring), r 0.6s var(--ease);
+}
+.m2-bc:hover .m2-core {
+  transform: scale(1.15);
+}
+.m2-lb {
+  font: 600 11px var(--sans);
+  fill: var(--tx);
+  text-anchor: middle;
+  paint-order: stroke;
+  stroke: var(--ink);
+  stroke-width: 4px;
+  opacity: 0;
+  transition: opacity 0.3s;
+  pointer-events: none;
+}
+.m2-lb tspan {
+  fill: var(--saf);
+  font-family: var(--mono);
+}
+.m2-bc.is-show .m2-lb,
+.m2-bc:hover .m2-lb,
+.m2-bc:focus-visible .m2-lb {
+  opacity: 1;
+}
+
+/* ---------------------------------------------------------------- arcs */
+.m2-arcs path {
+  fill: none;
+  stroke-width: 9;
+  stroke-linecap: round;
+  cursor: pointer;
+  animation: m2-draw 1.2s var(--ease) backwards;
+  transition: stroke-width 0.3s, opacity 0.3s;
+}
+@keyframes m2-draw {
+  from {
+    stroke-dashoffset: var(--len);
+  }
+}
+.m2-arcs path:hover,
+.m2-arcs path.is-on {
+  stroke-width: 13;
+}
+.m2-arcs.is-f path:not(.is-on) {
+  opacity: 0.3;
+}
+.m2-arcs text {
+  font: 600 10px var(--sans);
+  fill: var(--tx);
+  paint-order: stroke;
+  stroke: var(--ink2);
+  stroke-width: 3px;
+  pointer-events: none;
+}
+.m2-arcs tspan {
+  fill: var(--tx2);
+  font-family: var(--mono);
+}
+
+/* ---------------------------------------------------------------- overlays */
+.m2__tip {
+  position: absolute;
+  left: 0;
+  top: 0;
+  z-index: 6;
+  padding: 10px 14px;
+  border-radius: 12px;
+  font-size: 13px;
+  white-space: nowrap;
+  pointer-events: none;
+  opacity: 0;
+  transition: opacity 0.2s;
+}
+.m2__tip.is-on {
+  opacity: 1;
+}
+.m2__tip b {
+  display: block;
+  font-size: 15px;
+}
+.m2__tip span {
+  color: var(--tx2);
+  font-size: 12px;
+}
+
+.m2-city {
+  position: absolute;
+  z-index: 4;
+  top: 20px;
+  left: 20px;
+  width: 290px;
+  max-height: calc(100% - 150px);
+  overflow-y: auto;
+  padding: 20px;
+  border-radius: 22px;
+  animation: m2-cityin 0.6s var(--ease) backwards;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line2) transparent;
+}
+@keyframes m2-cityin {
+  from {
+    opacity: 0;
+    transform: translateY(-12px) scale(0.98);
+  }
+}
+.m2-back {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  margin-bottom: 14px;
+  padding: 6px 12px 6px 8px;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  color: var(--tx2);
+  font-size: 12.5px;
+  transition: color 0.2s, background 0.2s;
+}
+.m2-back:hover {
+  color: var(--tx);
+  background: rgb(255 255 255 / 0.05);
+}
+@media (pointer: coarse) {
+  .m2-back {
+    min-height: 44px;
+  }
+}
+.m2-city .eb {
+  display: block;
+  margin: 0;
+}
+.m2-city h2 {
+  font-size: 48px;
+  line-height: 1.05;
+  overflow-wrap: anywhere;
+}
+.m2-city__count {
+  color: var(--tx2);
+  font-size: 14px;
+}
+.m2-city__count b {
+  font-size: 22px;
+  font-weight: 500;
+}
+.m2-city__stats {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap: 8px;
+  margin: 16px 0;
+}
+.m2-city__stats div {
+  padding: 10px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.04);
+}
+.m2-city__stats b {
+  display: block;
+  font: 500 16px var(--mono);
+}
+.m2-city__stats span {
+  color: var(--tx3);
+  font-size: 11px;
+}
+.m2-city__cats {
+  display: grid;
+  gap: 2px;
+}
+.m2-cat {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  width: 100%;
+  min-height: 36px;
+  padding: 7px 8px;
+  border-radius: 10px;
+  color: var(--tx2);
+  font-size: 13px;
+  text-align: left;
+  transition: background 0.2s, color 0.2s;
+}
+.m2-cat i {
+  flex: none;
+  width: 8px;
+  height: 8px;
+  border-radius: 50%;
+  background: var(--c);
+}
+.m2-cat em {
+  margin-left: auto;
+  font: normal 12px var(--mono);
+}
+.m2-cat:hover,
+.m2-cat.is-on {
+  background: rgb(255 255 255 / 0.06);
+  color: var(--tx);
+}
+.m2-cat.is-on {
+  box-shadow: inset 0 0 0 1px color-mix(in srgb, var(--c) 55%, transparent);
+}
+
+.m2-remote {
+  position: absolute;
+  z-index: 3;
+  left: 20px;
+  bottom: 38px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  align-items: center;
+  gap: 0 12px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  text-align: left;
+  transition: transform 0.4s var(--ease), border-color 0.4s;
+}
+.m2-remote svg {
+  grid-row: span 2;
+  color: var(--vio);
+}
+.m2-remote small {
+  color: var(--tx3);
+  font-size: 12px;
+}
+.m2-remote:hover,
+.m2-remote.is-on {
+  border-color: rgb(139 92 246 / 0.6);
+  transform: translateY(-3px);
+}
+.m2-legend {
+  position: absolute;
+  z-index: 3;
+  top: 20px;
+  right: 20px;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  padding: 8px 14px;
+  border-radius: 999px;
+  color: var(--tx2);
+  font-size: 12px;
+}
+.m2-legend__dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 50%;
+  background: radial-gradient(circle at 35% 35%, #ffe2b0, #ffb23f 45%, #ff4f7b);
+  box-shadow: 0 0 10px var(--rose);
+}
+.m2-view {
+  position: absolute;
+  z-index: 3;
+  top: 64px;
+  right: 20px;
+  display: flex;
+  padding: 3px;
+  border-radius: 999px;
+}
+.m2-view button {
+  min-width: 44px;
+  min-height: 32px;
+  padding: 4px 14px;
+  border-radius: 999px;
+  color: var(--tx2);
+  font: 500 12px var(--mono);
+  letter-spacing: 0.06em;
+  transition: color 0.2s, background 0.3s;
+}
+.m2-view button:hover {
+  color: var(--tx);
+}
+.m2-view button.is-on {
+  background: var(--grad);
+  color: #1b0e10;
+  font-weight: 600;
+}
+@media (pointer: coarse) {
+  .m2-view button {
+    min-height: 44px;
+    min-width: 52px;
+  }
+}
+.m2__zoom {
+  position: absolute;
+  z-index: 3;
+  right: 20px;
+  bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 14px;
+}
+.m2__zoom button {
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  color: var(--tx2);
+  transition: color 0.2s, background 0.2s;
+}
+.m2__zoom button + button {
+  border-top: 1px solid var(--line);
+}
+.m2__zoom button:hover {
+  color: var(--tx);
+  background: rgb(255 255 255 / 0.06);
+}
+@media (pointer: coarse) {
+  .m2__zoom button {
+    width: 44px;
+    height: 44px;
+  }
+}
+.m2-attr {
+  position: absolute;
+  z-index: 2;
+  left: 20px;
+  bottom: 12px;
+  max-width: calc(100% - 100px);
+  margin: 0;
+  color: var(--tx3);
+  font-size: 11px;
+  line-height: 1.3;
+}
+.m2-attr a {
+  text-decoration: underline;
+  text-decoration-color: rgb(110 104 128 / 0.5);
+  text-underline-offset: 2px;
+}
+.m2-attr a:hover {
+  color: var(--tx2);
+}
+
+/* ---------------------------------------------------------------- 3D scene in the card */
+.m2-3d {
+  position: absolute;
+  inset: 0;
+}
+.m2-3d .jm-root {
+  background: transparent;
+}
+.m2-card--3d .jm-back {
+  display: none;
+}
+.m2-note {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-content: center;
+  justify-items: center;
+  gap: 12px;
+  padding: 24px;
+  color: var(--tx2);
+  font-size: 14px;
+  text-align: center;
+}
+.m2-note--err {
+  inset: auto;
+  top: 72px;
+  left: 50%;
+  z-index: 4;
+  max-width: min(420px, calc(100% - 32px));
+  padding: 14px 18px;
+  border-radius: 16px;
+  transform: translateX(-50%);
+  justify-items: start;
+  place-content: start;
+}
+
+/* ---------------------------------------------------------------- phones */
+@media (max-width: 760px) {
+  .m2-city {
+    top: 56px;
+    left: 12px;
+    right: 12px;
+    width: auto;
+    max-height: none;
+    padding: 14px 16px;
+    overflow: visible;
+  }
+  .m2-city .eb {
+    display: none;
+  }
+  .m2-back {
+    position: absolute;
+    top: 12px;
+    right: 14px;
+    margin: 0;
+  }
+  .m2-city h2 {
+    padding-right: 110px;
+    font-size: 34px;
+  }
+  .m2-city__stats {
+    margin: 10px 0;
+  }
+  .m2-city__stats div {
+    padding: 8px 10px;
+  }
+  .m2-city__cats {
+    display: flex;
+    gap: 6px;
+    margin-inline: -4px;
+    padding: 2px 4px;
+    overflow-x: auto;
+    scrollbar-width: none;
+  }
+  .m2-cat {
+    flex: none;
+    width: auto;
+    min-height: 36px;
+    padding: 6px 12px;
+    border: 1px solid var(--line2);
+    border-radius: 999px;
+    white-space: nowrap;
+  }
+  .m2-card--focus .m2-legend {
+    display: none;
+  }
+  .m2-legend,
+  .m2-view {
+    top: 12px;
+  }
+  .m2-legend {
+    right: auto;
+    left: 12px;
+  }
+  .m2-view {
+    right: 12px;
+  }
+  .m2-remote {
+    left: 12px;
+    bottom: 34px;
+    padding: 10px 14px;
+  }
+  .m2__zoom {
+    right: 12px;
+    bottom: 34px;
+  }
+  .m2-attr {
+    left: 12px;
+    bottom: 10px;
+    max-width: calc(100% - 24px);
+  }
+}
+
+/* Panels floating over the map: a backdrop blur over a moving map is recomputed every frame, so they are flat. */
+.m2__tip.glass,
+.m2__zoom.glass,
+.m2-city.glass,
+.m2-remote.glass,
+.m2-legend.glass,
+.m2-view.glass,
+.m2-note.glass {
+  backdrop-filter: none;
+  background: rgb(18 15 26 / 0.93);
+}

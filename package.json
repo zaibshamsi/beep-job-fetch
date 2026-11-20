@@ -1,0 +1,31 @@
+{
+  "name": "beep-job-fetch",
+  "private": true,
+  "version": "0.1.0",
+  "type": "module",
+  "description": "Fresher jobs and internships in India: data pipeline, AI tagging, 3D map",
+  "workspaces": [
+    "packages/*",
+    "worker",
+    "api",
+    "web"
+  ],
+  "scripts": {
+    "db:migrate": "tsx packages/shared/src/cli/migrate.ts",
+    "db:seed": "tsx packages/shared/src/cli/seed-cities.ts",
+    "db:setup": "npm run db:migrate && npm run db:seed",
+    "worker": "npm run start -w worker",
+    "api": "npm run dev -w api",
+    "test": "vitest run",
+    "typecheck": "tsc -p tsconfig.json --noEmit",
+    "web": "npm run dev -w @beep/web",
+    "build": "npm run build -w @beep/web",
+    "retag": "npm run retag -w worker"
+  },
+  "devDependencies": {
+    "@types/node": "^22.10.0",
+    "tsx": "^4.19.0",
+    "typescript": "^5.7.0",
+    "vitest": "^2.1.8"
+  }
+}

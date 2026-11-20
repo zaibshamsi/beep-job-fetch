@@ -1,0 +1,30 @@
+{
+  "_note": "from-docs: sample 200 response of the Jooble REST API documentation (jooblehelpcenter.freshdesk.com), values adapted to India. No Jooble key was available to record a live response.",
+  "totalCount": 2,
+  "jobs": [
+    {
+      "id": 1234567890,
+      "title": "Sales Trainee",
+      "location": "Mumbai",
+      "snippet": "This is a great opportunity to join our team ... <b>freshers</b> welcome",
+      "salary": "15,000 - 20,000 INR",
+      "source": "example-board.in",
+      "type": "Full-time",
+      "link": "https://in.jooble.org/jdp/1234567890",
+      "company": "ABC Corp",
+      "updated": "2026-11-12T12:55:35.3870000"
+    },
+    {
+      "id": 1234567891,
+      "title": "Head of Sales",
+      "location": "Mumbai",
+      "snippet": "Lead the team",
+      "salary": "",
+      "source": "example-board.in",
+      "type": "Full-time",
+      "link": "https://in.jooble.org/jdp/1234567891",
+      "company": "ABC Corp",
+      "updated": "2026-11-12T12:55:35.3870000"
+    }
+  ]
+}

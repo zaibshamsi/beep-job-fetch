@@ -1,0 +1,626 @@
+/*
+ * Map page (/map): layout, side panel, job list, job cards, states and the job drawer.
+ * Ported from the #app view of docs/design/claude-design-reference.html. Classes are prefixed mp- so they cannot
+ * collide with the landing page; tokens and shared classes (.glass .btn .chip .eb .g .serif .new kbd .field) come from design.css.
+ */
+
+/* ---------------------------------------------------------------- layout */
+.mp {
+  height: 100dvh;
+  padding: 88px 16px 16px;
+  display: grid;
+  grid-template-columns: 400px minmax(0, 1fr);
+  gap: 16px;
+}
+.mp-side {
+  display: flex;
+  flex-direction: column;
+  min-height: 0;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  background: var(--panel);
+  overflow: hidden;
+}
+.mp-map {
+  position: relative;
+  min-height: 0;
+  min-width: 0;
+  border: 1px solid var(--line);
+  border-radius: 24px;
+  overflow: hidden;
+  background: radial-gradient(ellipse 60% 55% at 55% 45%, rgb(139 92 246 / 0.16), transparent 70%),
+    radial-gradient(ellipse 40% 40% at 40% 75%, rgb(255 79 123 / 0.08), transparent 70%), var(--ink2);
+}
+@media (max-width: 960px) {
+  .mp {
+    height: auto;
+    min-height: 100dvh;
+    grid-template-columns: minmax(0, 1fr);
+    grid-template-rows: 62vh auto;
+  }
+  .mp-map {
+    order: -1;
+    min-height: 420px;
+  }
+  .mp-side {
+    overflow: visible;
+  }
+}
+@media (max-width: 480px) {
+  .mp {
+    padding-inline: 12px;
+    gap: 12px;
+  }
+}
+
+/* ---------------------------------------------------------------- side panel header */
+.mp-sh {
+  flex: none;
+  padding: 24px 22px 16px;
+  border-bottom: 1px solid var(--line);
+}
+.mp-sh h1 {
+  font-size: 34px;
+  line-height: 1;
+  letter-spacing: -0.04em;
+  font-weight: 700;
+}
+.mp-sh h1 em {
+  font-size: 1.12em;
+  padding-right: 0.06em;
+}
+.mp-meta {
+  min-height: 20px;
+  margin: 10px 0 18px;
+  color: var(--tx3);
+  font-size: 13px;
+  line-height: 1.5;
+}
+.mp-meta b {
+  color: var(--tx);
+  font: 500 13px var(--mono);
+}
+.mp-scroll {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line2) transparent;
+}
+@media (max-width: 960px) {
+  .mp-scroll {
+    overflow: visible;
+  }
+}
+
+/* ---------------------------------------------------------------- count line, sort */
+.mp-lh {
+  position: sticky;
+  top: 0;
+  z-index: 2;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  gap: 12px;
+  min-height: 52px;
+  padding: 10px 22px;
+  background: rgb(18 15 26 / 0.94);
+  backdrop-filter: blur(10px);
+  font-size: 13px;
+  color: var(--tx2);
+}
+@media (max-width: 960px) {
+  .mp-lh {
+    position: static;
+    background: none;
+    backdrop-filter: none;
+  }
+}
+.mp-lh__count {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+}
+.mp-lh__count b {
+  color: var(--tx);
+  font-family: var(--mono);
+  font-weight: 500;
+}
+.mp-lh .mp-sort {
+  flex: none;
+  width: auto;
+  min-height: 32px;
+  padding: 4px 8px;
+  border-radius: 8px;
+  background: transparent;
+  color: var(--tx2);
+  font: 12.5px var(--sans);
+}
+@media (pointer: coarse) {
+  .mp-lh .mp-sort {
+    min-height: 44px;
+    font-size: 14px;
+  }
+}
+.mp-sort option:disabled {
+  color: var(--tx3);
+}
+
+/* ---------------------------------------------------------------- job list and cards */
+.mp-list {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  padding: 0 12px 16px;
+}
+.mp-job {
+  display: flex;
+  gap: 14px;
+  padding: 16px;
+  border: 1px solid var(--line);
+  border-radius: 18px;
+  background: rgb(255 255 255 / 0.02);
+  text-align: left;
+  animation: mp-jin 0.6s var(--ease) backwards;
+  transition: border-color 0.3s, background 0.3s, transform 0.4s var(--ease);
+}
+@keyframes mp-jin {
+  from {
+    opacity: 0;
+    transform: translateY(12px);
+  }
+}
+.mp-job:hover {
+  border-color: var(--line2);
+  background: rgb(255 255 255 / 0.045);
+  transform: translateX(3px);
+}
+.mp-job.is-on {
+  border-color: rgb(255 178 63 / 0.55);
+  background: rgb(255 178 63 / 0.06);
+}
+.mp-job:focus-visible {
+  border-radius: 18px;
+}
+.mg {
+  flex: none;
+  display: grid;
+  place-items: center;
+  width: 42px;
+  height: 42px;
+  border-radius: 12px;
+  font-weight: 700;
+  color: #1b0e10;
+  background: linear-gradient(135deg, hsl(var(--h) 95% 72%), hsl(calc(var(--h) - 40) 85% 58%));
+}
+.mg.lg {
+  width: 52px;
+  height: 52px;
+  border-radius: 15px;
+  font-size: 20px;
+}
+.mp-job__body {
+  display: flex;
+  flex-direction: column;
+  flex: 1;
+  min-width: 0;
+}
+.mp-job__title {
+  display: -webkit-box;
+  -webkit-box-orient: vertical;
+  -webkit-line-clamp: 2;
+  line-clamp: 2;
+  overflow: hidden;
+  font-size: 15px;
+  font-weight: 600;
+  line-height: 1.3;
+  letter-spacing: -0.01em;
+  overflow-wrap: anywhere;
+}
+.mp-job__co {
+  color: var(--tx2);
+  font-size: 13.5px;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.mp-job__mt {
+  margin-top: 6px;
+  color: var(--tx3);
+  font-size: 12.5px;
+  line-height: 1.45;
+}
+.mp-job__foot {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+  margin-top: 10px;
+  color: var(--tx3);
+  font-size: 12px;
+  font-variant-numeric: tabular-nums;
+}
+.mp-job__via {
+  margin-left: auto;
+  min-width: 0;
+  overflow: hidden;
+  white-space: nowrap;
+  text-overflow: ellipsis;
+}
+.mp-job--skel {
+  pointer-events: none;
+  animation: none;
+}
+.mp-job--skel .mg {
+  border-radius: 12px;
+}
+.mp-more {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  align-self: center;
+  min-height: 44px;
+  margin: 6px auto;
+  padding: 10px 18px;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  color: var(--tx2);
+  font-size: 13px;
+  transition: color 0.2s, background 0.2s;
+}
+.mp-more:hover:not([disabled]) {
+  color: var(--tx);
+  background: rgb(255 255 255 / 0.05);
+}
+.mp-more[disabled] {
+  opacity: 0.6;
+  cursor: progress;
+}
+
+/* ---------------------------------------------------------------- empty, error, skeleton, spinner */
+.mp-state {
+  margin: 8px 0;
+  color: var(--tx2);
+  font-size: 13px;
+}
+.mp-state--empty {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 6px;
+  padding: 60px 20px;
+  color: var(--tx3);
+  text-align: center;
+}
+.mp-state--empty svg {
+  color: var(--saf);
+}
+.mp-state--empty b {
+  color: var(--tx);
+  font-size: 15px;
+}
+.mp-state--empty .btn {
+  margin-top: 10px;
+}
+.mp-state--error {
+  display: grid;
+  justify-items: start;
+  gap: 12px;
+  padding: 16px;
+  border: 1px solid rgb(255 107 138 / 0.35);
+  border-radius: 16px;
+  background: rgb(255 107 138 / 0.06);
+  color: var(--tx);
+}
+.mp-state--compact {
+  margin: 0;
+  padding: 12px;
+}
+.mp-skel {
+  display: block;
+  height: 12px;
+  max-width: 100%;
+  border-radius: 6px;
+  background: rgb(255 255 255 / 0.07);
+  animation: mp-pulse 1.4s ease-in-out infinite;
+}
+.mg.mp-skel {
+  background: rgb(255 255 255 / 0.07);
+  border-radius: 12px;
+}
+.mp-meta .mp-skel {
+  display: inline-block;
+  vertical-align: middle;
+}
+@keyframes mp-pulse {
+  50% {
+    opacity: 0.45;
+  }
+}
+.mp-spinner {
+  flex: none;
+  display: inline-block;
+  width: 14px;
+  height: 14px;
+  border: 2px solid rgb(255 255 255 / 0.2);
+  border-top-color: currentColor;
+  border-radius: 50%;
+  animation: mp-spin 0.8s linear infinite;
+}
+@keyframes mp-spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+@media (prefers-reduced-motion: reduce) {
+  .mp-spinner {
+    animation: mp-spin 1.6s linear infinite !important;
+  }
+}
+
+/* ---------------------------------------------------------------- job drawer */
+.mp-drawer {
+  position: absolute;
+  z-index: 5;
+  top: 12px;
+  right: 12px;
+  bottom: 12px;
+  width: min(440px, calc(100% - 24px));
+  display: flex;
+  flex-direction: column;
+  overflow: hidden;
+  border-radius: 22px;
+  background: rgb(18 15 26 / 0.9);
+  visibility: hidden;
+  transform: translateX(calc(100% + 24px));
+  transition: transform 0.7s var(--ease), visibility 0s 0.7s;
+  outline: none;
+}
+.mp-drawer.is-on {
+  visibility: visible;
+  transform: none;
+  transition: transform 0.7s var(--ease), visibility 0s;
+}
+.mp-drawer--sheet {
+  position: fixed;
+  z-index: 60;
+  inset: 0;
+  width: auto;
+  border: 0;
+  border-radius: 0;
+  background: var(--ink2);
+  transform: translateY(100%);
+  padding-top: env(safe-area-inset-top);
+}
+.mp-drawer__head {
+  position: relative;
+  flex: none;
+  padding: 26px 26px 22px;
+  border-bottom: 1px solid var(--line);
+  background: radial-gradient(circle at 15% 0, color-mix(in srgb, var(--c, var(--saf)) 42%, transparent), transparent 65%);
+}
+.mp-drawer__head .eb {
+  display: block;
+  margin: 16px 0 0;
+}
+.mp-drawer__head h2 {
+  margin: 6px 0 4px;
+  font-size: clamp(28px, 2.6vw, 38px);
+  line-height: 1.05;
+  outline: none;
+  overflow-wrap: anywhere;
+}
+.mp-drawer__head h2:focus-visible {
+  outline: 2px solid var(--saf);
+  outline-offset: 4px;
+}
+.mp-drawer__head p {
+  color: var(--tx2);
+}
+.mp-x {
+  position: absolute;
+  top: 18px;
+  right: 18px;
+  display: grid;
+  place-items: center;
+  width: 36px;
+  height: 36px;
+  border: 1px solid var(--line2);
+  border-radius: 50%;
+  transition: transform 0.3s, background 0.3s;
+}
+.mp-x:hover {
+  transform: rotate(90deg);
+  background: rgb(255 255 255 / 0.06);
+}
+@media (pointer: coarse) {
+  .mp-x {
+    width: 44px;
+    height: 44px;
+    top: calc(12px + env(safe-area-inset-top));
+    right: 12px;
+  }
+}
+.mp-drawer__body {
+  flex: 1;
+  min-height: 0;
+  overflow-y: auto;
+  overscroll-behavior: contain;
+  padding: 22px 26px;
+  scrollbar-width: thin;
+  scrollbar-color: var(--line2) transparent;
+}
+.mp-drawer__body > * {
+  animation: mp-jin 0.6s var(--ease) backwards;
+}
+.mp-facts {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 8px;
+  list-style: none;
+}
+.mp-facts li {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  min-width: 0;
+  padding: 10px 12px;
+  border-radius: 12px;
+  background: rgb(255 255 255 / 0.035);
+  font-size: 13px;
+  line-height: 1.35;
+  overflow-wrap: anywhere;
+}
+.mp-facts li.is-muted {
+  color: var(--tx3);
+}
+.mp-facts__icon {
+  flex: none;
+  display: inline-flex;
+  color: var(--saf);
+}
+.mp-facts--skel {
+  display: grid;
+}
+.mp-notice,
+.mp-notice[role] {
+  display: flex;
+  align-items: flex-start;
+  gap: 8px;
+  margin-bottom: 14px;
+  padding: 12px;
+  border: 1px solid rgb(255 178 63 / 0.4);
+  border-radius: 12px;
+  background: rgb(255 178 63 / 0.08);
+  font-size: 13px;
+  font-weight: 500;
+}
+.mp-notice svg {
+  flex: none;
+  margin-top: 2px;
+  color: var(--saf);
+}
+.mp-ai {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin: 14px 0 6px;
+  color: var(--tx3);
+  font-size: 12.5px;
+}
+.mp-ai.is-ok {
+  color: var(--jade);
+}
+.mp-h4 {
+  margin: 22px 0 10px;
+  font: 500 11px var(--mono);
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: var(--tx3);
+}
+.mp-desc {
+  display: grid;
+  gap: 10px;
+}
+.mp-desc p {
+  color: var(--tx2);
+  font-size: 14.5px;
+  line-height: 1.75;
+  overflow-wrap: anywhere;
+}
+.mp-textbtn {
+  position: relative;
+  margin-top: 10px;
+  padding: 4px 2px;
+  color: var(--saf);
+  font-size: 13px;
+  font-weight: 600;
+  text-decoration: underline;
+  text-decoration-color: rgb(255 178 63 / 0.4);
+  text-underline-offset: 3px;
+}
+.mp-textbtn:hover {
+  text-decoration-color: currentColor;
+}
+@media (pointer: coarse) {
+  .mp-textbtn::after {
+    content: '';
+    position: absolute;
+    inset: -12px -6px;
+  }
+}
+.mp-skills,
+.mp-also {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+  list-style: none;
+}
+.mp-skills li {
+  padding: 6px 12px;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  font-size: 12.5px;
+}
+.mp-also a {
+  display: inline-flex;
+  align-items: center;
+  gap: 6px;
+  min-height: 32px;
+  padding: 4px 12px;
+  border: 1px solid var(--line2);
+  border-radius: 999px;
+  color: var(--tx2);
+  font-size: 12.5px;
+  transition: color 0.2s, border-color 0.2s;
+}
+.mp-also a:hover {
+  color: var(--tx);
+  border-color: rgb(255 255 255 / 0.3);
+}
+.mp-drawer__foot {
+  flex: none;
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) auto;
+  gap: 10px;
+  padding: 16px 26px 22px;
+  border-top: 1px solid var(--line);
+}
+.mp-drawer--sheet .mp-drawer__foot {
+  padding-bottom: calc(22px + env(safe-area-inset-bottom));
+}
+.mp-drawer__foot .btn {
+  min-width: 0;
+}
+.mp-credit {
+  grid-column: 1 / -1;
+  color: var(--tx3);
+  font-size: 12px;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+.mp-drawer__skeleton {
+  display: grid;
+  gap: 10px;
+}
+@media (max-width: 420px) {
+  .mp-drawer__head,
+  .mp-drawer__body {
+    padding-inline: 18px;
+  }
+  .mp-drawer__foot {
+    padding-inline: 18px;
+  }
+}
+
+/* The drawer slides over the map: flat, no backdrop blur. */
+.mp-drawer.glass {
+  backdrop-filter: none;
+  background: rgb(18 15 26 / 0.96);
+}
+.mp-drawer {
+  will-change: transform;
+}

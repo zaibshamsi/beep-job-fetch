@@ -1,0 +1,202 @@
+{
+ "categories": [
+  {
+   "id": 20,
+   "name": "Apprentice"
+  },
+  {
+   "id": 9,
+   "name": "Bangalore Jobs"
+  },
+  {
+   "id": 18,
+   "name": "BPO/KPO Jobs"
+  },
+  {
+   "id": 5,
+   "name": "Freshers Jobs"
+  },
+  {
+   "id": 11,
+   "name": "Government Jobs"
+  },
+  {
+   "id": 14,
+   "name": "Hyderabad Jobs"
+  },
+  {
+   "id": 243,
+   "name": "Internship"
+  },
+  {
+   "id": 6,
+   "name": "IT/Software Jobs"
+  },
+  {
+   "id": 7,
+   "name": "Jobs"
+  },
+  {
+   "id": 267,
+   "name": "Jobs for 2025 Batch"
+  },
+  {
+   "id": 32,
+   "name": "Jobs in Maharashtra"
+  },
+  {
+   "id": 17,
+   "name": "Mumbai Jobs"
+  },
+  {
+   "id": 10,
+   "name": "Off Campus Drives"
+  },
+  {
+   "id": 13,
+   "name": "Pune Jobs"
+  },
+  {
+   "id": 16,
+   "name": "Walk-in Drive"
+  }
+ ],
+ "posts": [
+  {
+   "id": 43223,
+   "date_gmt": "2026-11-18T05:35:09",
+   "link": "https://www.freshersvoice.com/apple-recruitment",
+   "title": {
+    "rendered": "Apple Recruitment 2026 &#8211; Junior Fullstack Engineer &#8211; ETS"
+   },
+   "excerpt": {
+    "rendered": "<p>Apple Recruitment 2026: Apple is scheduled to hire a Junior Fullstack Engineer &#8211; ETS for B.E/B.Tech/BS qualifications. Candidates looking for jobs &#8230; <a title=\"Apple Recruitment 2026 &#8211; Junior Fullstack Engineer &#8211; ETS\" class=\"read-more\" href=\"https://www.freshersvoice.com/apple-recruitment\" aria-label=\"Read more about Apple Recruitment 2026 &#8211; Junior Fullstack Engineer &#8211; ETS\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    5,
+    14,
+    6,
+    7
+   ]
+  },
+  {
+   "id": 7880,
+   "date_gmt": "2026-11-18T05:13:24",
+   "link": "https://www.freshersvoice.com/infosys-walk-in-drive",
+   "title": {
+    "rendered": "Infosys Walk-In Drive 2026 for Process/Senior Process Executive | 19 &#038; 21 November 2026"
+   },
+   "excerpt": {
+    "rendered": "<p>Infosys Walk-in Drive 2026: Infosys is conducting a Walk-in for the Process Executive/Senior Process Executive roles. Candidates with Any degree/B.Com/BBA/BBM qualification are &#8230; <a title=\"Infosys Walk-In Drive 2026 for Process/Senior Process Executive | 19 &#038; 21 November 2026\" class=\"read-more\" href=\"https://www.freshersvoice.com/infosys-walk-in-drive\" aria-label=\"Read more about Infosys Walk-In Drive 2026 for Process/Senior Process Executive | 19 &#038; 21 November 2026\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    9,
+    18,
+    5,
+    7,
+    32,
+    13,
+    16
+   ]
+  },
+  {
+   "id": 94487,
+   "date_gmt": "2026-11-18T04:08:38",
+   "link": "https://www.freshersvoice.com/intellipaat-off-campus-drive",
+   "title": {
+    "rendered": "Intellipaat Off Campus Drive 2026: Business Development Associate &#8211; Trainee"
+   },
+   "excerpt": {
+    "rendered": "<p>Intellipaat Off Campus Drive 2026: Intellipaat is hiring for the Business Development Associate &#8211; Trainee role. Candidates with Any degree/PG degree qualification are &#8230; <a title=\"Intellipaat Off Campus Drive 2026: Business Development Associate &#8211; Trainee\" class=\"read-more\" href=\"https://www.freshersvoice.com/intellipaat-off-campus-drive\" aria-label=\"Read more about Intellipaat Off Campus Drive 2026: Business Development Associate &#8211; Trainee\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    9,
+    5,
+    6,
+    7,
+    10
+   ]
+  },
+  {
+   "id": 130086,
+   "date_gmt": "2026-11-17T09:40:40",
+   "link": "https://www.freshersvoice.com/carrier-internship",
+   "title": {
+    "rendered": "Carrier Internship 2026, Apply Now!"
+   },
+   "excerpt": {
+    "rendered": "<p>Carrier Internship 2026: Carrier is hiring Interns. Candidates with B.E/B.Tech/B.Sc/M.E/M.Tech/M.Sc qualifications are eligible to apply for this position. Candidates looking for internships &#8230; <a title=\"Carrier Internship 2026, Apply Now!\" class=\"read-more\" href=\"https://www.freshersvoice.com/carrier-internship\" aria-label=\"Read more about Carrier Internship 2026, Apply Now!\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    5,
+    14,
+    243,
+    6,
+    7
+   ]
+  },
+  {
+   "id": 118266,
+   "date_gmt": "2026-11-17T08:45:26",
+   "link": "https://www.freshersvoice.com/iocl-apprentice",
+   "title": {
+    "rendered": "IOCL Apprentice Recruitment 2026 for 500 Vacancies, Apply Now !"
+   },
+   "excerpt": {
+    "rendered": "<p>IOCL Apprentice 2026: Indian Oil Corporation Limited (IOCL) has announced the notification for Technician Apprentice/Trade Apprentice/Data Entry Operator posts. There are &#8230; <a title=\"IOCL Apprentice Recruitment 2026 for 500 Vacancies, Apply Now !\" class=\"read-more\" href=\"https://www.freshersvoice.com/iocl-apprentice\" aria-label=\"Read more about IOCL Apprentice Recruitment 2026 for 500 Vacancies, Apply Now !\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    20,
+    5,
+    11,
+    7
+   ]
+  },
+  {
+   "id": 263,
+   "date_gmt": "2026-11-17T08:25:33",
+   "link": "https://www.freshersvoice.com/tech-mahindra-walk-in-drive",
+   "title": {
+    "rendered": "Tech Mahindra Walk-in Drive 2026: Multiple Roles | 18 &#8211; 30 November 2026"
+   },
+   "excerpt": {
+    "rendered": "<p>Tech Mahindra Walk-in Drive 2026: Tech Mahindra is hiring for Recruiter/Customer Support Associate/Customer Care Executive/Customer Care Executive/Customer Support Executive roles. Candidates with &#8230; <a title=\"Tech Mahindra Walk-in Drive 2026: Multiple Roles | 18 &#8211; 30 November 2026\" class=\"read-more\" href=\"https://www.freshersvoice.com/tech-mahindra-walk-in-drive\" aria-label=\"Read more about Tech Mahindra Walk-in Drive 2026: Multiple Roles | 18 &#8211; 30 November 2026\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    9,
+    18,
+    5,
+    14,
+    7,
+    267,
+    32,
+    17,
+    13,
+    16
+   ]
+  },
+  {
+   "id": 90272,
+   "date_gmt": "2026-11-17T07:44:34",
+   "link": "https://www.freshersvoice.com/societe-generale-recruitment",
+   "title": {
+    "rendered": "Societe Generale Recruitment 2026 &#8211; Analyst"
+   },
+   "excerpt": {
+    "rendered": "<p>Societe Generale Recruitment 2026: Societe Generale is scheduled to hire for the role of Analyst. Candidates with an B.E/B.Tech/Any degree qualification &#8230; <a title=\"Societe Generale Recruitment 2026 &#8211; Analyst\" class=\"read-more\" href=\"https://www.freshersvoice.com/societe-generale-recruitment\" aria-label=\"Read more about Societe Generale Recruitment 2026 &#8211; Analyst\">Read more</a></p>\n",
+    "protected": false
+   },
+   "categories": [
+    9,
+    6,
+    7
+   ]
+  }
+ ]
+}

@@ -1,0 +1,129 @@
+{
+ "apiVersion": "1",
+ "jobs": [
+  {
+   "id": "2b7f3dda-fba7-499c-934d-b0fdfb21fe08",
+   "title": "Associate Data Scientist",
+   "department": "Engineering",
+   "team": "Engineering",
+   "employmentType": "FullTime",
+   "location": "Bangalore",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-10-08T15:30:21.996+00:00",
+   "isListed": true,
+   "isRemote": null,
+   "workplaceType": null,
+   "address": {
+    "postalAddress": {
+     "addressRegion": "Karnataka",
+     "addressCountry": "India",
+     "addressLocality": "Bangalore"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/bureau/2b7f3dda-fba7-499c-934d-b0fdfb21fe08",
+   "applyUrl": "https://jobs.ashbyhq.com/bureau/2b7f3dda-fba7-499c-934d-b0fdfb21fe08/application",
+   "descriptionHtml": "<div style=\"text-align:left\"><img style=\"max-width:100%\" src=\"https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png\" /></div><h2><strong>About Bureau</strong></h2><p style=\"min-height:1.5em\">Bureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.</p><p style=\"min-height:1.5em\">Bureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital and PayPal Ventures and is expanding rapidly from APAC to Americas, Europe, and beyond.</p><h2><strong>Why Bureau?</strong></h2><p style=\"min-height:1.5",
+   "descriptionPlain": "[https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png]\n\n\nABOUT BUREAU\n\nBureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.\n\nBureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital a",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "51277b78-eb75-467f-b758-88828f9a7a03",
+   "title": "Senior Android Engineer",
+   "department": "Engineering",
+   "team": "Engineering",
+   "employmentType": "FullTime",
+   "location": "Bangalore",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-08-13T13:52:53.540+00:00",
+   "isListed": true,
+   "isRemote": true,
+   "workplaceType": "Hybrid",
+   "address": {
+    "postalAddress": {
+     "addressRegion": "Karnataka",
+     "addressCountry": "India",
+     "addressLocality": "Bangalore"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/bureau/51277b78-eb75-467f-b758-88828f9a7a03",
+   "applyUrl": "https://jobs.ashbyhq.com/bureau/51277b78-eb75-467f-b758-88828f9a7a03/application",
+   "descriptionHtml": "<div style=\"text-align:left\"><img style=\"max-width:100%\" src=\"https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png\" /></div><h2><strong>About Bureau</strong></h2><p style=\"min-height:1.5em\">Bureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.</p><p style=\"min-height:1.5em\">Bureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital and PayPal Ventures and is expanding rapidly from APAC to Americas, Europe, and beyond.</p><h2><strong>Why Bureau?</strong></h2><p style=\"min-height:1.5",
+   "descriptionPlain": "[https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png]\n\n\nABOUT BUREAU\n\nBureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.\n\nBureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital a",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "a2b4133f-6974-4353-9fcd-476c8734dc48",
+   "title": "Finance Associate",
+   "department": "Finance",
+   "team": "Finance",
+   "employmentType": "FullTime",
+   "location": "Bangalore",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-10-23T07:17:44.405+00:00",
+   "isListed": true,
+   "isRemote": null,
+   "workplaceType": null,
+   "address": {
+    "postalAddress": {
+     "addressRegion": "Karnataka",
+     "addressCountry": "India",
+     "addressLocality": "Bangalore"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/bureau/a2b4133f-6974-4353-9fcd-476c8734dc48",
+   "applyUrl": "https://jobs.ashbyhq.com/bureau/a2b4133f-6974-4353-9fcd-476c8734dc48/application",
+   "descriptionHtml": "<div style=\"text-align:left\"><img style=\"max-width:100%\" src=\"https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png\" /></div><h2><strong>About Bureau</strong></h2><p style=\"min-height:1.5em\">Bureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.</p><p style=\"min-height:1.5em\">Bureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital and PayPal Ventures and is expanding rapidly from APAC to Americas, Europe, and beyond.</p><h2><strong>Why Bureau?</strong></h2><p style=\"min-height:1.5",
+   "descriptionPlain": "[https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png]\n\n\nABOUT BUREAU\n\nBureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.\n\nBureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital a",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  },
+  {
+   "id": "9dd1d722-f4cd-4611-aff5-e95c0c44af5f",
+   "title": "Senior Product Manager - Credit Risk",
+   "department": "Product",
+   "team": "Product",
+   "employmentType": "FullTime",
+   "location": "Bangalore",
+   "shouldDisplayCompensationOnJobPostings": false,
+   "secondaryLocations": [],
+   "publishedAt": "2026-10-30T07:11:33.633+00:00",
+   "isListed": true,
+   "isRemote": null,
+   "workplaceType": null,
+   "address": {
+    "postalAddress": {
+     "addressRegion": "Karnataka",
+     "addressCountry": "India",
+     "addressLocality": "Bangalore"
+    }
+   },
+   "jobUrl": "https://jobs.ashbyhq.com/bureau/9dd1d722-f4cd-4611-aff5-e95c0c44af5f",
+   "applyUrl": "https://jobs.ashbyhq.com/bureau/9dd1d722-f4cd-4611-aff5-e95c0c44af5f/application",
+   "descriptionHtml": "<div style=\"text-align:left\"><img style=\"max-width:100%\" src=\"https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png\" /></div><h2><strong>About Bureau</strong></h2><p style=\"min-height:1.5em\">Bureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.</p><p style=\"min-height:1.5em\">Bureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital and PayPal Ventures and is expanding rapidly from APAC to Americas, Europe, and beyond.</p><h2><strong>Why Bureau?</strong></h2><p style=\"min-height:1.5",
+   "descriptionPlain": "[https://app.ashbyhq.com/api/images/user-content/eadb4172-e32d-48aa-b2d2-1be048f84b9c/1c9ccfe8-7946-4ad5-a384-897fea8db295/Bureau%20Careers%20gamechanger.png]\n\n\nABOUT BUREAU\n\nBureau is a unified risk decisioning platform for Compliance, Fraud, and Transaction risks. Our platform is a single decision-making engine, powered by a 1 billion+ identity knowledge graph. Over 150 Banks, fintechs, retailers, and digital platforms use Bureau to verify identities faster and stop fraud earlier globally.\n\nBureau has raised $50M+ from renowned Silicon Valley and global investors including Sorenson Capital a",
+   "compensation": {
+    "compensationTierSummary": null,
+    "scrapeableCompensationSalarySummary": null,
+    "compensationTiers": [],
+    "summaryComponents": []
+   }
+  }
+ ]
+}
