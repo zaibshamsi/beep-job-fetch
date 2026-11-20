@@ -100,7 +100,7 @@ async function llmUsage() {
 }
 
 /**
- * Tagging cost per 1,000 posts = model cost of the runs that tagged posts / posts those runs added
+ * Tagging cost per 1,000 posts = model cost of the runs that used the full chain (Jev answered) / posts those runs tagged
  * (stats.newJobs; falls back to distinct posts that reached a model). Null when nothing was tagged yet.
  */
 async function costPer1000() {
@@ -110,7 +110,9 @@ async function costPer1000() {
             SUM(CASE WHEN purpose = 'tag_llm' THEN cost_usd ELSE 0 END) AS llmCost,
             COUNT(DISTINCT job_id) AS jobs,
             COUNT(DISTINCT CASE WHEN purpose = 'tag_llm' THEN job_id END) AS llmJobs
-     FROM llm_calls WHERE purpose IN ${TAG_PURPOSES} AND run_id IS NOT NULL GROUP BY run_id`,
+     FROM llm_calls WHERE purpose IN ${TAG_PURPOSES} AND run_id IN (SELECT id FROM pipeline_runs WHERE status = 'success') GROUP BY run_id
+     -- only runs where the shipped chain worked (Jev answered); a run where Jev was down tagged everything with the LLM and would overstate the cost
+     HAVING SUM(CASE WHEN provider = 'jev' AND success = 1 THEN 1 ELSE 0 END) > 0`,
   );
   let tagging: Record<string, number> | null = null;
   if (perRun.length) {

@@ -1,91 +1,147 @@
 # BeepJobFetch
 
-Fresher jobs and internships in India, collected every day from public sources, de-duplicated, tagged by role and city with AI, and shown on a 3D map of India.
+Fresher jobs and internships in India, collected every morning from public sources, de-duplicated, tagged by role and city with AI, and shown on a map you can search in plain words.
 
-- **Product spec:** [docs/PRD.md](docs/PRD.md)
-- **How it is built and how AI was used:** [docs/WORKING_DOC.md](docs/WORKING_DOC.md)
-- **Which sources are used and why others are not:** [docs/SOURCE_REVIEW.md](docs/SOURCE_REVIEW.md), [docs/CAREERS_REVIEW.md](docs/CAREERS_REVIEW.md)
-- **API reference:** [docs/API.md](docs/API.md)
-- **Engineering contract:** [docs/ENGINEERING.md](docs/ENGINEERING.md)
+- **What you get:** a daily pipeline, a REST API, and a web app with a landing page, an interactive map of India (2D beacons or a 3D column view), search, and a data-health page.
+- **Current data:** about 800 fresher jobs from 10 sources across 48 cities plus remote roles (last full run).
+- **Everything is measured:** the app records every AI call with its tokens and cost, so cost per 1,000 posts and tagging accuracy are numbers you can read on the Insights page.
+
+Documents: [Working document](docs/WORKING_DOC.md) (how it was built, AI tools, prompts, results) · [Product spec](docs/PRD.md) · [API reference](docs/API.md) · [Engineering notes](docs/ENGINEERING.md) · [Source reviews](docs/SOURCE_REVIEW.md), [career sites](docs/CAREERS_REVIEW.md)
 
 ## How it works
 
 ```
-sources (public APIs, feeds, sitemaps)
-   -> fetch -> store raw -> normalize -> fresher filter -> dedupe -> enrich -> publish -> expire old
-                                                                      |
-                                              rules (free) -> Jev (fast, typed) -> LLM (only when unsure)
+ public sources ──► WORKER (Node, daily 06:00 IST, or on demand)
+                    fetch → store raw → normalize → fresher filter → de-duplicate → enrich → publish → expire
+                                                                                       │
+                                            rules (free) ─► Jev (fast, typed) ─► LLM (only when unsure)
+                                                    LangGraph: validate → repair → confidence gate
+                                  │
+                                  ▼
+                          SQL Server  ◄──  Express API  ◄──  React app (map, search, insights, settings)
 ```
 
-- **Sources** follow each site's terms and robots.txt. Sites that forbid automated access are not used; the reasoning for every site is in the source review docs.
-- **Enrichment** runs rules first (cities, stipend, experience, skills), then Jev for role, job type, work mode and fresher decisions with a confidence score, then an LLM only for what is still missing or uncertain.
-- **Worker** runs the pipeline daily at 06:00 India time and picks up manual runs from a queue.
-- **API** serves jobs, city summaries, search, stats and settings.
+1. **Sources.** Public job-board APIs (Greenhouse, Lever, Ashby, Workable: 621 company boards), Unstop, FreshersVoice, remote-job feeds, and company career pages that publish standard `JobPosting` data. Sites whose terms or robots.txt forbid automated access (LinkedIn, Naukri, Indeed, Internshala, Glassdoor and others) are not used; each decision is documented with the clause it rests on.
+2. **Pipeline.** Every source is a small adapter that maps to one standard job format. The worker removes non-fresher posts, merges duplicates (exact URL, then fuzzy company + title + city), and expires jobs that disappear from their source.
+3. **Tagging.** Rules settle what is certain (cities, stipend, experience, skills). **Jev** (TypeSafe AI) picks role, job type, work mode and a fresher probability, each with a confidence score. An **LLM** (Azure AI Foundry) reads only what is still missing or uncertain. A LangGraph graph validates every answer against closed lists and retries once with the error if it is invalid. With no AI keys the app still works on rules alone.
+4. **App.** Search accepts sentences such as "internships in Bengaluru with stipend": they become filters you can see and remove. Filters, the selected city and the open job all live in the URL, so every view is shareable.
 
 ## Setup
 
-Requirements: Node 22+, and a SQL Server you can reach (Developer or Express edition is fine).
+### Requirements
+
+- Node.js 22 or newer
+- A SQL Server you can reach (Developer or Express edition is fine) and a **SQL login** (user and password). Windows authentication is not supported.
+
+### 1. Install
 
 ```bash
 git clone https://github.com/zaibshamsi/beep-job-fetch.git
 cd beep-job-fetch
 npm install
-cp .env.example .env     # set DB_* for your SQL Server
-npm run db:setup         # creates the tables and seeds the city list
 ```
 
-Then, in separate terminals:
+### 2. Create the database
 
-```bash
-npm run worker           # pipeline + daily schedule (add "-- --once" to run once and exit)
-npm run api              # REST API on http://localhost:4000
-npm run web              # the app on http://localhost:5173 (talks to the API through /api)
+Create an empty database and a login that owns it (change the name and password):
+
+```sql
+CREATE DATABASE beepjobfetch;
+CREATE LOGIN beepjob_app WITH PASSWORD = 'choose-a-strong-password';
+USE beepjobfetch;
+CREATE USER beepjob_app FOR LOGIN beepjob_app;
+ALTER ROLE db_owner ADD MEMBER beepjob_app;
 ```
 
-The first run takes about 10 minutes because sources are fetched politely, one request at a time per site. The app shows jobs as soon as the first run saves them. Add `-- --once` to `npm run worker` to run a single pass and exit.
-
-The database user needs permission to create tables in the target database. `npm run db:migrate` is safe to re-run.
-
-### AI keys (optional)
-
-The app works without any key: tagging then uses rules only, and posts the rules cannot decide are hidden and flagged for review. To enable AI tagging, either fill these in `.env` or add them on the Settings page of the app:
-
-| Setting | Purpose |
-|---|---|
-| `JEV_API_KEY` | Jev (TypeSafe AI) for fast typed decisions. A TypeSafe key or an OpenRouter key (`sk-or-...`) both work; the route is picked from the key |
-| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_DEPLOYMENT` | LLM on Azure AI Foundry |
-
-Keys saved in the app are encrypted in the database. Keys in `.env` are used when nothing is saved.
-
-### More sources (optional)
-
-Without keys these sources are skipped and the run log says so: `ADZUNA_APP_ID` / `ADZUNA_APP_KEY` (developer.adzuna.com), `JOOBLE_API_KEY` (jooble.org/api/about). Public job boards, open remote-job feeds and a few India fresher sites need no key.
-
-### Re-tagging after you add AI keys
+### 3. Configure
 
 ```bash
-npm run retag            # re-tags jobs the rules could not settle, using the keys now available
-npm run retag -- --all   # re-tags every active job
+cp .env.example .env        # on Windows: copy .env.example .env
+```
+
+Set at least the `DB_*` values in `.env`. Everything else is optional (see Configuration below). Then create the tables and the city list:
+
+```bash
+npm run db:setup            # safe to re-run
+```
+
+### 4. Run
+
+Open three terminals in the repo folder:
+
+```bash
+npm run worker              # pipeline: runs once if the database is empty, then daily at 06:00 IST
+npm run api                 # REST API on http://localhost:4000
+npm run web                 # the app on http://localhost:5173
+```
+
+Open http://localhost:5173. The first pipeline run takes about 10 minutes, because every site is fetched politely, one request at a time. Jobs appear in the app as soon as they are saved. To refresh later, press **Run pipeline** on the Insights page, or run `npm run worker -- --once`.
+
+## Configuration
+
+| Variable | Needed for | Notes |
+|---|---|---|
+| `DB_SERVER`, `DB_PORT`, `DB_NAME`, `DB_USER`, `DB_PASSWORD` | everything | SQL Server login from step 2 |
+| `JEV_API_KEY`, `JEV_MODEL` | Jev tagging | Either a TypeSafe key (console.typesafe.ai/keys, model `jev-latest`) or an OpenRouter key (`sk-or-…`, model `typesafe/jev-1.14`). The route is chosen from the key. |
+| `AZURE_OPENAI_ENDPOINT`, `AZURE_OPENAI_API_KEY`, `AZURE_OPENAI_DEPLOYMENT` | LLM tagging | Your Azure AI Foundry deployment. `AZURE_OPENAI_API_VERSION` has a default. |
+| `ADZUNA_APP_ID`, `ADZUNA_APP_KEY`, `JOOBLE_API_KEY` | extra sources | Optional. A source without its key is skipped and the run log says so. |
+| `ADMIN_TOKEN` | deployments | When set, the settings and run endpoints require an `x-admin-token` header. Leave empty locally. |
+
+**AI keys can also be entered in the app** (Settings page, with a Test connection button). Keys saved there are encrypted in the database and override `.env`.
+
+After adding keys, re-tag the jobs the rules could not settle:
+
+```bash
+npm run retag               # needs-review jobs only
+npm run retag -- --all      # every active job
 ```
 
 The daily run also re-tags stale jobs by itself.
 
-## Tests
+## Using the app
 
-```bash
-npm run typecheck
-npm test                 # unit tests, plus integration tests against the configured database
+| Page | What it does |
+|---|---|
+| **Home** (`/`) | What the product is, how the pipeline works, which sources are read and which are refused, live numbers |
+| **Map** (`/map`) | Beacons sized by job count. Click a city for its role breakdown and jobs; click a job to read it and apply at the source. Switch between 2D and 3D. |
+| **Insights** | Last run funnel, per-source status and terms, AI usage and cost per 1,000 posts, tagging accuracy, a Run pipeline button |
+| **Review** | Hand-check a sample of 50 tagged posts; accuracy per field is computed from your answers and can be exported as CSV |
+| **Settings** | Add or test the Jev and LLM keys |
+
+## Commands
+
+| Command | Does |
+|---|---|
+| `npm run db:setup` | Create or update tables and load cities |
+| `npm run worker` / `npm run worker -- --once` | Pipeline with schedule / one pass |
+| `npm run api` | REST API |
+| `npm run web` | Web app (development server) |
+| `npm run build` | Production build of the web app (`web/dist`) |
+| `npm run retag` | Re-tag existing jobs with the AI keys now available |
+| `npm test` | All tests (about 590) |
+| `npm run typecheck` | Type check the backend |
+
+## Project layout
+
 ```
-
-Do not run the integration tests while a pipeline run is active: they refuse to start a second run.
-
-## Repo layout
-
-```
-packages/shared   env, database, types, polite HTTP, city list
-packages/ai       rules, Jev and LLM providers, settings, enrichment graph, search parsing
-worker            pipeline and source adapters
-api               Express REST API
+packages/shared   settings, database access, job format, polite HTTP client, city list
+packages/ai       rules, Jev and LLM clients, key storage, tagging graph, search parsing
+worker            pipeline and one adapter per source (worker/src/sources)
+api               REST API (Express)
+web               React app
 db/migrations     SQL schema
-docs              spec, engineering notes, working doc, source reviews
+docs              spec, API, engineering notes, working document, source reviews
 ```
+
+## Troubleshooting
+
+- **"Login failed" or the API reports the database is unreachable:** check `DB_*` in `.env`, that SQL Server accepts TCP connections on that port, and that SQL authentication is enabled.
+- **The map is empty:** the worker has not saved jobs yet. Start `npm run worker` and wait for the first run, or press Run pipeline on Insights.
+- **"Test connection" returns 401 for Jev:** the key does not match the route. A key starting with `sk-or-` must come from OpenRouter; any other key must come from TypeSafe. A key saved in Settings overrides `.env`: remove it there first.
+- **Tests fail with "another run active":** the integration tests share the pipeline's one-run-at-a-time lock. Stop the worker and any running pipeline first.
+
+## Known limits
+
+- Accuracy and cost figures depend on the AI keys you provide; with no keys, tagging is rules-only and uncertain posts are hidden and flagged for review.
+- Posts are placed in a city, not at a street address; the map spreads jobs around the city centre.
+- Source terms can change. The adapters follow each site's terms as reviewed on 2026-11-18; re-check before relying on a source long term.

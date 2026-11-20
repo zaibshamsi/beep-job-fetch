@@ -48,9 +48,15 @@ export function allocateQuotas(counts: Record<string, number>, size: number): Re
   return quotas;
 }
 
+/**
+ * The hand check measures the shipped tagging chain, so the sample is drawn only from jobs that Jev took part in
+ * (prompt_version starts with 'jev'). Jobs tagged by rules alone or by the LLM alone are not what is being measured.
+ */
+const SAMPLE_WHERE = "status = 'active' AND is_fresher = 1 AND prompt_version LIKE 'jev%'";
+
 export async function sampleForLabelling(size: number) {
   const counts = await query<{ source: string; n: number }>(
-    `SELECT primary_source AS source, COUNT(*) AS n FROM jobs WHERE status = 'active' AND is_fresher = 1 GROUP BY primary_source`,
+    `SELECT primary_source AS source, COUNT(*) AS n FROM jobs WHERE ${SAMPLE_WHERE} GROUP BY primary_source`,
   );
   const quotas = allocateQuotas(Object.fromEntries(counts.map((c) => [c.source, Number(c.n)])), size);
   const maxQuota = Math.max(0, ...Object.values(quotas));
@@ -59,7 +65,7 @@ export async function sampleForLabelling(size: number) {
   const ranked = await query<{ id: number; source: string; rn: number }>(
     `SELECT id, source, rn FROM (
        SELECT id, primary_source AS source, ROW_NUMBER() OVER (PARTITION BY primary_source ORDER BY NEWID()) AS rn
-       FROM jobs WHERE status = 'active' AND is_fresher = 1
+       FROM jobs WHERE ${SAMPLE_WHERE}
      ) t WHERE rn <= @maxQuota`,
     { maxQuota },
   );

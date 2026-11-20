@@ -33,10 +33,10 @@ async function insertJob(j: {
 }) {
   const rows = await query<{ id: number }>(
     `INSERT INTO jobs (title, company, company_norm, title_norm, description, apply_url, url_hash, location_raw, posted_at, primary_source,
-        role_category, job_type, work_mode, is_fresher, stipend_min_monthly_inr, stipend_max_monthly_inr, skills, status, search_text, tagged_by)
+        role_category, job_type, work_mode, is_fresher, stipend_min_monthly_inr, stipend_max_monthly_inr, skills, status, search_text, tagged_by, prompt_version)
      OUTPUT INSERTED.id
      VALUES (@title, @company, @company, @title, @description, @url, @hash, @loc, ${j.postedDaysAgo == null ? 'NULL' : 'DATEADD(day, -@posted, SYSUTCDATETIME())'},
-        @src, @role, @jobType, @workMode, @fresher, @smin, @smax, '["python","sql"]', @status, @search, '{"roleCategory":"rules"}')`,
+        @src, @role, @jobType, @workMode, @fresher, @smin, @smax, '["python","sql"]', @status, @search, '{"roleCategory":"rules"}', 'jev.v1+llm.v1')`,
     {
       title: j.title,
       company: j.company,

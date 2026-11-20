@@ -17,7 +17,8 @@ export interface RetagCandidate {
   isFresher: boolean;
 }
 
-export type RetagMode = 'stale' | 'needs-review' | 'all';
+/** 'sample' = a random set of fresher jobs the Jev chain has not tagged yet (builds a fair hand-check set). */
+export type RetagMode = 'stale' | 'needs-review' | 'all' | 'sample';
 
 /**
  * The graph writes promptVersion as 'rules', 'jev.v1', 'llm.v1' or 'jev.v1+llm.v1'.
@@ -42,6 +43,14 @@ export function isStale(job: RetagCandidate, aiConfigured: boolean): boolean {
 
 /** Ids to re-tag, oldest job first (ids grow with first insert, so successive capped runs converge). */
 export function selectRetag(jobs: RetagCandidate[], o: { mode: RetagMode; aiConfigured: boolean; limit?: number }): number[] {
+  if (o.mode === 'sample') {
+    const pool = jobs.filter((j) => j.isFresher && !versionParts(j.promptVersion).includes(JEV_PROMPT_VERSION)).map((j) => j.id);
+    for (let i = pool.length - 1; i > 0; i--) {
+      const k = Math.floor(Math.random() * (i + 1));
+      [pool[i], pool[k]] = [pool[k]!, pool[i]!];
+    }
+    return o.limit && o.limit > 0 ? pool.slice(0, o.limit) : pool;
+  }
   const pick = (j: RetagCandidate) =>
     o.mode === 'all' ? true : o.mode === 'needs-review' ? j.needsReview : isStale(j, o.aiConfigured);
   const ids = jobs

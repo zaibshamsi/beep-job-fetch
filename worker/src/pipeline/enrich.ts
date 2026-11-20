@@ -68,7 +68,7 @@ export async function enrichStage(
           return { cand, ...cached, needsReview: false, used: { jev: false, llm: false }, fromCache: true };
         }
         try {
-          const res = await enrich(cand.post, { runId: o.runId, jobId: o.jobIds?.get(cand) });
+          const res = await enrich(cand.post, { runId: o.runId || undefined, jobId: o.jobIds?.get(cand) });
           const enrichment = EnrichmentSchema.parse(res.enrichment);
           return {
             cand,

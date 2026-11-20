@@ -2,11 +2,28 @@
 
 | | |
 |---|---|
-| **Status** | Draft v0.3 — for review (v0.2: Jev + LLM design; v0.3: Azure Foundry LLM, local SQL Server, queued manual runs) |
+| **Status** | Original plan, kept for reference. As built: see the section "What changed during the build" below and the README |
 | **Owner** | Zaib Shamsi |
 | **Last updated** | 2026-11-17 |
 | **Deadline** | Code complete Friday 2026-11-20 morning; submission Friday night |
 | **Repo** | github.com/zaibshamsi/beep-job-fetch |
+
+
+## What changed during the build
+
+This document is the plan written on day one. The shipped product differs in these ways:
+
+| Plan | As built |
+|---|---|
+| 3D map of India as the main interface | A 2D beacon map of the real India boundary as the default, with the 3D column view behind a 2D / 3D switch |
+| Docker Compose setup | Plain setup: install, create a SQL Server database, `npm run db:setup`, run worker, API and web (see the README) |
+| LLM via LangChain `ChatOpenAI` | Azure AI Foundry through the `openai` package; LangGraph only orchestrates the tagging steps |
+| One LLM key | Jev (TypeSafe key or OpenRouter key) and an Azure LLM, both settable in the app |
+| 50-post check measured with a labelling script | A Review page in the app (keyboard driven, CSV export) |
+| Sources: Adzuna, Greenhouse, Lever, Ashby, Workable plus career pages | Built, plus Unstop, FreshersVoice and open remote-job feeds; SmartRecruiters, Recruitee, Zoho and Workday refused on terms |
+| Pipeline: fresher filter keeps undecided posts | Undecided posts are hidden and flagged for review (precision over recall) |
+
+The measured results and the reasons for each change are in [WORKING_DOC.md](WORKING_DOC.md).
 
 ---
 
