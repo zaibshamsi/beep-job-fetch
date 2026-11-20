@@ -4,7 +4,7 @@ Fresher jobs and internships in India, collected every morning from public sourc
 
 - **What you get:** a daily pipeline, a REST API, and a web app with a landing page, an interactive map of India (2D beacons or a 3D column view), search, and a data-health page.
 - **Current data:** about 800 fresher jobs from 10 sources across 48 cities plus remote roles (last full run).
-- **Everything is measured:** the app records every AI call with its tokens and cost, so cost per 1,000 posts and tagging accuracy are numbers you can read on the Insights page.
+- **Cost is measured:** the app records every AI call with its tokens and cost, so cost per 1,000 posts is a number you can read on the Insights page (about 0.71 USD with the shipped chain).
 
 Documents: [Working document](docs/WORKING_DOC.md) (how it was built, AI tools, prompts, results) · [Product spec](docs/PRD.md) · [API reference](docs/API.md) · [Engineering notes](docs/ENGINEERING.md) · [Source reviews](docs/SOURCE_REVIEW.md), [career sites](docs/CAREERS_REVIEW.md)
 
@@ -104,8 +104,8 @@ The daily run also re-tags stale jobs by itself.
 |---|---|
 | **Home** (`/`) | What the product is, how the pipeline works, which sources are read and which are refused, live numbers |
 | **Map** (`/map`) | Beacons sized by job count. Click a city for its role breakdown and jobs; click a job to read it and apply at the source. Switch between 2D and 3D. |
-| **Insights** | Last run funnel, per-source status and terms, AI usage and cost per 1,000 posts, tagging accuracy, a Run pipeline button |
-| **Review** | Hand-check a sample of 50 tagged posts; accuracy per field is computed from your answers and can be exported as CSV |
+| **Insights** | Last run funnel, per-source status and terms, AI usage and cost per 1,000 posts, a Run pipeline button |
+| **Review** | A tool to hand-check a sample of tagged posts and compute accuracy per field (CSV export). Not yet used for a published figure. |
 | **Settings** | Add or test the Jev and LLM keys |
 
 ## Commands
@@ -142,6 +142,6 @@ docs              spec, API, engineering notes, working document, source reviews
 
 ## Known limits
 
-- Accuracy and cost figures depend on the AI keys you provide; with no keys, tagging is rules-only and uncertain posts are hidden and flagged for review.
+- Cost figures depend on the AI keys you provide; with no keys, tagging is rules-only and uncertain posts are hidden and flagged for review.
 - Posts are placed in a city, not at a street address; the map spreads jobs around the city centre.
 - Source terms can change. The adapters follow each site's terms as reviewed on 2026-11-18; re-check before relying on a source long term.

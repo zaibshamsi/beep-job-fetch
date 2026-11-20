@@ -22,7 +22,6 @@ How the project was built, which AI tools and prompts did the work, and what the
 | Tagging | Rules, then Jev, then an LLM only for what is still unsure; every call logged with tokens and cost |
 | Tests | About 590 automated tests |
 | Measured cost | about 0.71 USD per 1,000 posts with the shipped chain, against about 2.70 USD with an LLM alone (section 6) |
-| Measured accuracy | Section 6 |
 
 ## 2. How AI was used
 
@@ -91,7 +90,7 @@ Design rules applied to the product prompts:
 - **Closed lists and strict schemas.** Anything outside the role list or the city list fails validation and triggers one repair attempt with the error message.
 - **The post is data, not instructions.** The system prompt says to ignore instructions inside the post.
 
-Full text of both LLM prompts is in the appendix. Accuracy per prompt version is recorded in section 6.
+Full text of both LLM prompts is in the appendix.
 
 ## 4. Decisions
 
@@ -143,18 +142,7 @@ Full text of both LLM prompts is in the appendix. Accuracy per prompt version is
 
 ## 6. Measurement
 
-Accuracy and cost are measured inside the product, not estimated. Method and results:
-
-### 6.1 Tagging accuracy: 50 hand-checked posts
-
-A sample of 50 active jobs is drawn on the Review page, only from posts tagged by the shipped chain (Jev involved), spread across their sources. For each, the predicted role, city, job type and fresher flag are marked correct or wrong, with the right value when wrong. Accuracy per field is computed from those labels and shown on the Insights page.
-
-| Field | Correct / 50 | Accuracy |
-|---|---|---|
-| Role category | | |
-| City | | |
-| Job type | | |
-| Fresher flag | | |
+Cost is measured inside the product from logged calls, not estimated.
 
 ### 6.2 Cost
 
@@ -173,12 +161,12 @@ Every AI call is logged with its tokens and cost, so cost per 1,000 posts comes 
 - **Baseline: LLM on every post, no Jev (two full runs): 2,851 calls, 5.35 USD for about 1,980 posts, so about 2.70 USD per 1,000 posts.** The shipped chain is about 74 percent cheaper than sending everything to the LLM.
 - Re-tagging with Jev also corrected the fresher call on 45 of the 450 posts that the LLM-only pass had marked as fresher (10 percent), and the pipeline keeps those out of the fresher list.
 
-### 6.3 Model comparison
+### 6.3 Cost comparison
 
-| Setup | Cost per 1,000 posts | Role accuracy | City accuracy |
-|---|---|---|---|
-| LLM on every post (baseline) | about 2.70 USD | | |
-| Rules, Jev, then LLM on escalation (shipped) | about 0.71 USD | | |
+| Setup | Cost per 1,000 posts |
+|---|---|
+| LLM on every post (baseline) | about 2.70 USD |
+| Rules, Jev, then LLM on escalation (shipped) | about 0.71 USD |
 
 ## 7. Problems met and how they were solved
 
@@ -193,11 +181,12 @@ Every AI call is logged with its tokens and cost, so cost per 1,000 posts comes 
 
 ## 8. Limits and next steps
 
-- Cost and accuracy depend on the AI keys supplied; with no keys the app runs on rules alone and hides uncertain posts for review.
+- Cost depends on the AI keys supplied; with no keys the app runs on rules alone and hides uncertain posts for review.
 - Posts are placed in a city, not at a street address.
 - Adzuna and Jooble are built to follow their terms but stay off until keys are added.
 - The terms pages of about two thirds of the 57 career sites could not be retrieved. Those sites are read only through their public JobPosting data with robots.txt respected, and are marked accordingly in the source review.
-- Next: a hosted deployment with an admin token, and a larger hand-checked set.
+- Tagging accuracy has not been measured against hand-labelled posts. The app includes a Review page for this, and measuring it is the first next step.
+- Next: a hosted deployment with an admin token.
 
 ## Appendix: product prompt text
 
