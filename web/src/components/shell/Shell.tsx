@@ -6,9 +6,8 @@ import './shell.css';
 const TITLES: Record<string, string> = {
   '/': 'Fresher jobs and internships across India',
   '/map': 'Map of fresher jobs',
-  '/insights': 'Data health and accuracy',
+  '/insights': 'Data health and cost',
   '/settings': 'AI settings',
-  '/review': 'Tagging review',
 };
 
 /** Floating glass nav over every page. The home page shows section anchors; app pages show the app links. */
@@ -42,7 +41,6 @@ export function Shell() {
           <>
             <NavLink className="l" to="/map">Map</NavLink>
             <NavLink className="l" to="/insights">Insights</NavLink>
-            <NavLink className="l" to="/review">Review</NavLink>
             <NavLink className="l" to="/settings">Settings</NavLink>
           </>
         )}

@@ -105,7 +105,6 @@ The daily run also re-tags stale jobs by itself.
 | **Home** (`/`) | What the product is, how the pipeline works, which sources are read and which are refused, live numbers |
 | **Map** (`/map`) | Beacons sized by job count. Click a city for its role breakdown and jobs; click a job to read it and apply at the source. Switch between 2D and 3D. |
 | **Insights** | Last run funnel, per-source status and terms, AI usage and cost per 1,000 posts, a Run pipeline button |
-| **Review** | A tool to hand-check a sample of tagged posts and compute accuracy per field (CSV export). Not yet used for a published figure. |
 | **Settings** | Add or test the Jev and LLM keys |
 
 ## Commands

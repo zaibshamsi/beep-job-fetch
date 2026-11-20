@@ -42,7 +42,6 @@ export function Footer() {
           <span className="h">In the app</span>
           <Link to="/map">Map</Link>
           <Link to="/insights">Insights</Link>
-          <Link to="/review">Review</Link>
           <Link to="/settings">Settings</Link>
         </nav>
       </div>

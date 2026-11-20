@@ -219,13 +219,9 @@ export const TAG_BY_LABEL: Record<TagBy, string> = {
 
 /* ---------- numbers ---------- */
 
-/** The honest closing line of the numbers section: real cost and accuracy from /stats, or "not measured yet". */
+/** The closing line of the numbers section: the measured tagging cost from /stats, or "not measured yet". */
 export function qualityLine(stats: Stats): string {
   const per1000 = stats.costPer1000?.tagging?.per1000Posts;
-  const pct = stats.accuracy?.overall?.percent;
-  const checked = stats.accuracy?.labelledJobs ?? 0;
   const cost = per1000 == null ? 'not measured yet' : `$${per1000.toFixed(per1000 < 1 ? 3 : 2)}`;
-  const accuracy = pct == null ? 'not measured yet' : `${Math.round(pct)}%`;
-  const on = checked > 0 ? ` on ${fmtNum(checked)} hand-checked posts` : ' on hand-checked posts';
-  return `Cost per 1,000 posts tagged: ${cost}. Tagging accuracy${on}: ${accuracy}.`;
+  return `Cost per 1,000 posts tagged: ${cost}.`;
 }

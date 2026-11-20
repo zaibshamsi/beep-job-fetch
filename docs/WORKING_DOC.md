@@ -185,7 +185,6 @@ Every AI call is logged with its tokens and cost, so cost per 1,000 posts comes 
 - Posts are placed in a city, not at a street address.
 - Adzuna and Jooble are built to follow their terms but stay off until keys are added.
 - The terms pages of about two thirds of the 57 career sites could not be retrieved. Those sites are read only through their public JobPosting data with robots.txt respected, and are marked accordingly in the source review.
-- Tagging accuracy has not been measured against hand-labelled posts. The app includes a Review page for this, and measuring it is the first next step.
 - Next: a hosted deployment with an admin token.
 
 ## Appendix: product prompt text

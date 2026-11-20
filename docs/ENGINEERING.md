@@ -23,7 +23,7 @@ db/migrations     SQL Server migrations (npm run db:migrate)
 ## Database
 
 SQL Server `beepjobfetch` on the local server; connection from `.env`. Schema is in `db/migrations/001_init.sql`
-(tables: sources, pipeline_runs, raw_posts, cities, jobs, job_sources, job_cities, llm_calls, app_settings, search_cache, accuracy_labels).
+(tables: sources, pipeline_runs, raw_posts, cities, jobs, job_sources, job_cities, llm_calls, app_settings, search_cache).
 Use `query()` / `exec()` / `withTransaction()` from `@beep/shared` with named `@param` placeholders. Never build SQL by concatenating values.
 If you need a schema change, add a NEW migration file `db/migrations/00N_name.sql` (next free number, check the folder first) and run `npm run db:migrate`. Never edit an applied migration.
 

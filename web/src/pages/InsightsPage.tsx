@@ -4,7 +4,7 @@ import { useStats } from '../api/queries.ts';
 import type { LlmUsageRow, PipelineRun, SourceStatus, Stats } from '../api/types.ts';
 import { BarList } from '../components/ops/BarList.tsx';
 import { DataTable, type Column } from '../components/ops/DataTable.tsx';
-import { formatDateTime, formatDuration, formatInt, formatPercent, formatRate, formatRelative, formatUsd, plural } from '../components/ops/format.ts';
+import { formatDateTime, formatDuration, formatInt, formatRate, formatRelative, formatUsd, plural } from '../components/ops/format.ts';
 import { Funnel, type FunnelStep } from '../components/ops/Funnel.tsx';
 import { KpiCard } from '../components/ops/KpiCard.tsx';
 import { PageHead, SectionHead } from '../components/ops/PageHead.tsx';
@@ -30,7 +30,7 @@ export function InsightsPage() {
 
   return (
     <div className="wrap ops-page">
-      <PageHead eyebrow="Insights · Data health" title="Data health and" accent="accuracy" action={<RunPipelineButton ctl={ctl} />}>
+      <PageHead eyebrow="Insights · Data health" title="Data health and" accent="cost" action={<RunPipelineButton ctl={ctl} />}>
         <LastRunFact stats={s} pending={stats.isPending} />
       </PageHead>
       <RunProgress ctl={ctl} />
@@ -117,7 +117,6 @@ function Kpis({ s, loading }: { s: Stats | undefined; loading: boolean }) {
   const skipped = Object.values(lastPer).filter((p) => p.skipped).length;
   const errored = Object.values(lastPer).filter((p) => p.error).length;
   const t = s?.costPer1000.tagging ?? null;
-  const acc = s?.accuracy;
   return (
     <section className="ops-kpis" aria-label="Key numbers">
       <KpiCard
@@ -150,17 +149,6 @@ function Kpis({ s, loading }: { s: Stats | undefined; loading: boolean }) {
             : 'No AI tagging has run yet, so there is no cost to measure.'
         }
         footer={t ? undefined : <Link to="/settings">Add an AI key</Link>}
-      />
-      <KpiCard
-        loading={loading}
-        label="Tagging accuracy"
-        value={acc?.overall.percent != null ? formatPercent(acc.overall.percent) : null}
-        sub={
-          acc && acc.overall.total > 0
-            ? `${formatInt(acc.overall.correct)} of ${formatInt(acc.overall.total)} fields right on ${plural(acc.labelledJobs, 'hand-checked post')}`
-            : 'Check 50 posts by hand to measure it.'
-        }
-        footer={<Link to="/review">{acc && acc.overall.total > 0 ? 'Continue the hand check' : 'Start the hand check'}</Link>}
       />
     </section>
   );

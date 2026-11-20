@@ -183,9 +183,9 @@ describe('qualityLine', () => {
       accuracy: { labelledJobs: labelled, fields: {}, overall: { correct: 0, total: 0, percent } },
     }) as unknown as Stats;
   it('says "not measured yet" when there is no data', () => {
-    expect(qualityLine(stats(null, null))).toBe('Cost per 1,000 posts tagged: not measured yet. Tagging accuracy on hand-checked posts: not measured yet.');
+    expect(qualityLine(stats(null, null))).toBe('Cost per 1,000 posts tagged: not measured yet.');
   });
   it('shows real values', () => {
-    expect(qualityLine(stats(0.42, 91.6, 50))).toBe('Cost per 1,000 posts tagged: $0.420. Tagging accuracy on 50 hand-checked posts: 92%.');
+    expect(qualityLine(stats(0.42, 91.6, 50))).toBe('Cost per 1,000 posts tagged: $0.420.');
   });
 });

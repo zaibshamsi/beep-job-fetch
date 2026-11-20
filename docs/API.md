@@ -15,7 +15,6 @@ CORS allows only `WEB_ORIGIN` (default `http://localhost:5173`). Start with `npm
 |---|---|---|
 | 400 | `VALIDATION_ERROR` | bad query param, path param or body (message lists each problem) |
 | 400 | `BAD_JSON` | body is not valid JSON |
-| 400 | `UNKNOWN_JOB` | `PUT /accuracy/labels` references a job id that does not exist |
 | 401 / 403 | `UNAUTHORIZED` / `FORBIDDEN` | admin token missing / wrong (see Auth) |
 | 404 | `NOT_FOUND` | unknown route, job or run |
 | 409 | `RUN_ACTIVE` | a pipeline run is already queued or running (adds `runId`) |
@@ -23,7 +22,7 @@ CORS allows only `WEB_ORIGIN` (default `http://localhost:5173`). Start with `npm
 | 500 | `INTERNAL` | unexpected error (details only in the server log) |
 | 503 | `DB_UNAVAILABLE` | SQL Server is unreachable |
 
-**Auth.** If `ADMIN_TOKEN` is set in `.env`, send `x-admin-token: <token>` on everything under `/settings/*`, `/accuracy/*` and on `POST /pipeline/run`. With no token configured these are open (local use). Everything else is always public.
+**Auth.** If `ADMIN_TOKEN` is set in `.env`, send `x-admin-token: <token>` on everything under `/settings/*` and on `POST /pipeline/run`. With no token configured these are open (local use). Everything else is always public.
 
 **Visibility.** The public job endpoints (`/jobs`, `/cities/summary`, `/filters/options`, stats totals) only count posts with `status = 'active'` and `is_fresher = 1`. `GET /jobs/:id` returns any status so shared links to an expired post still open.
 
@@ -213,15 +212,13 @@ Data-health numbers for the stats page. Every section is present even on an empt
     "tagging": { "costUsd": 0.0114, "jevCostUsd": 0.0035, "llmCostUsd": 0.0079, "postsTagged": 214,
                  "per1000Posts": 0.0533, "escalationRate": 0.028, "runs": 1 },
     "search":  { "costUsd": 0.0004, "searches": 40, "per1000Searches": 0.01 }
-  },
-  "accuracy": { "labelledJobs": 50, "fields": { "role_category": { "correct": 46, "total": 50, "percent": 92 } }, "overall": { "correct": 190, "total": 200, "percent": 95 } }
+  }
 }
 ```
 
 - `lastRun` is the most recent run that is no longer queued or running; `activeRun` is the queued or running one (or `null`). Use `GET /pipeline/runs/:id` to poll its progress.
 - `sources` joins the `sources` table (terms, notes, last status) with active-post counts and the last run's per-source counters (`lastRun`, or `null`). A source with no row in the table appears with `termsStatus: "unchecked"`.
 - `costPer1000.tagging` = cost of `tag_jev` + `tag_llm` calls, divided by posts those runs added (`stats.newJobs`, falling back to distinct posts that reached a model), times 1000. `escalationRate` is the share of those posts that reached the LLM. It is `null` when nothing has been tagged yet. `costPer1000.search` is `null` until a search has been parsed; cached parses count as searches that cost nothing.
-- `accuracy.fields` keys are `role_category`, `cities`, `job_type`, `is_fresher`. `percent` is `null` when `total` is 0.
 
 ## GET /pipeline/runs
 
@@ -290,55 +287,3 @@ Optional body with the same fields as PUT, used as overrides (so a key can be te
 ```
 
 ---
-
-## Accuracy tooling (admin)
-
-For the 50-post hand check. Fields are `role_category`, `cities`, `job_type`, `is_fresher`.
-
-### GET /accuracy/sample?size=50
-
-Random sample of active fresher posts, stratified by `primary_source` (proportional, at least one per source). `size` 1 to 200.
-
-```json
-{
-  "size": 50,
-  "fields": ["role_category", "cities", "job_type", "is_fresher"],
-  "items": [
-    {
-      "id": 412, "title": "Python Developer Intern", "company": "Acme Labs", "locationRaw": "Pune, Maharashtra",
-      "descriptionExcerpt": "Join our platform team ...", "applyUrl": "https://...", "primarySource": "greenhouse",
-      "predicted": { "role_category": "Software Engineering", "cities": ["Pune"], "job_type": "internship", "is_fresher": true },
-      "workMode": "onsite",
-      "labels": { "role_category": { "correct": true, "correctValue": null } }
-    }
-  ]
-}
-```
-`labels` holds any labels already saved for the post, so a session can resume.
-
-### PUT /accuracy/labels
-
-Bulk upsert, keyed by `(jobId, field)`; 1 to 1000 labels. If `correct` is true, `correctValue` is cleared.
-
-```json
-{ "labels": [
-  { "jobId": 412, "field": "role_category", "predicted": "Software Engineering", "correct": true },
-  { "jobId": 412, "field": "cities", "predicted": "Pune", "correct": false, "correctValue": "Mumbai" }
-] }
-```
-Response `{ "upserted": 2 }`. 400 `UNKNOWN_JOB` if a job id does not exist (nothing is written).
-
-### GET /accuracy/summary
-
-```json
-{
-  "labelledJobs": 50,
-  "fields": {
-    "role_category": { "correct": 46, "total": 50, "percent": 92 },
-    "cities":        { "correct": 49, "total": 50, "percent": 98 },
-    "job_type":      { "correct": 50, "total": 50, "percent": 100 },
-    "is_fresher":    { "correct": 48, "total": 50, "percent": 96 }
-  },
-  "overall": { "correct": 193, "total": 200, "percent": 96.5 }
-}
-```

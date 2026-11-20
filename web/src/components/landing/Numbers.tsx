@@ -92,7 +92,7 @@ export function Numbers() {
         </div>
       )}
       <p ref={note.ref} className={`ld-note ${note.cls}`} style={note.style}>
-        {quality ?? 'Cost per 1,000 posts and tagging accuracy: shown once the numbers load.'}
+        {quality ?? 'Cost per 1,000 posts: shown once the numbers load.'}
       </p>
     </section>
   );

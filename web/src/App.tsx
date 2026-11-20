@@ -8,7 +8,6 @@ const LandingPage = lazy(() => import('./pages/LandingPage.tsx').then((m) => ({ 
 const MapPage = lazy(() => import('./pages/MapPage.tsx').then((m) => ({ default: m.MapPage })));
 const InsightsPage = lazy(() => import('./pages/InsightsPage.tsx').then((m) => ({ default: m.InsightsPage })));
 const SettingsPage = lazy(() => import('./pages/SettingsPage.tsx').then((m) => ({ default: m.SettingsPage })));
-const ReviewPage = lazy(() => import('./pages/ReviewPage.tsx').then((m) => ({ default: m.ReviewPage })));
 
 function JobRedirect() {
   const { id } = useParams();
@@ -32,7 +31,6 @@ export function App() {
           <Route path="map" element={<MapPage />} />
           <Route path="insights" element={<InsightsPage />} />
           <Route path="settings" element={<SettingsPage />} />
-          <Route path="review" element={<ReviewPage />} />
           <Route path="jobs/:id" element={<JobRedirect />} />
           <Route path="about" element={<Navigate to="/" replace />} />
           <Route path="*" element={<NotFoundPage />} />

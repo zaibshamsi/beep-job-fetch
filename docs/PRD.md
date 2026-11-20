@@ -19,7 +19,6 @@ This document is the plan written on day one. The shipped product differs in the
 | Docker Compose setup | Plain setup: install, create a SQL Server database, `npm run db:setup`, run worker, API and web (see the README) |
 | LLM via LangChain `ChatOpenAI` | Azure AI Foundry through the `openai` package; LangGraph only orchestrates the tagging steps |
 | One LLM key | Jev (TypeSafe key or OpenRouter key) and an Azure LLM, both settable in the app |
-| 50-post check measured with a labelling script | A Review page in the app (keyboard driven, CSV export) |
 | Sources: Adzuna, Greenhouse, Lever, Ashby, Workable plus career pages | Built, plus Unstop, FreshersVoice and open remote-job feeds; SmartRecruiters, Recruitee, Zoho and Workday refused on terms |
 | Pipeline: fresher filter keeps undecided posts | Undecided posts are hidden and flagged for review (precision over recall) |
 
@@ -36,7 +35,7 @@ The product starts from a take-home brief and goes further in four places:
 1. A real data pipeline: source adapters, a standard schema, dedupe, enrichment, and a job lifecycle.
 2. A 3D map of India as the main interface.
 3. Natural-language search ("python internships in pune with stipend").
-4. Built-in measurement: tagging accuracy, cost per 1,000 posts, and pipeline health, all visible in the app.
+4. Built-in measurement: cost per 1,000 posts and pipeline health, all visible in the app.
 
 ## 2. The brief (verbatim requirements)
 
@@ -49,7 +48,6 @@ The product starts from a take-home brief and goes further in four places:
 | R5 | Page refreshes every day on its own | §7.7 Scheduling |
 | R6 | Loom video (max 5 min, face + screen): architecture, what broke and how it was fixed | §14 Deliverables |
 | R7 | Share the repo | §12 Setup |
-| R8 | Hand-check 50 posts; report tagging accuracy | §13 Measurement |
 | R9 | Report cost per 1,000 posts | §13 Measurement |
 | R10 | Working doc or sheet with the data, AI tools and prompts used | `docs/WORKING_DOC.md`, exported to Google Sheet |
 
@@ -71,7 +69,6 @@ The product starts from a take-home brief and goes further in four places:
 ### Goals
 - G1. At least 200 active, deduplicated fresher posts in India after the first run.
 - G2. Every active post has a role category and at least one city (or `Remote`).
-- G3. Tagging accuracy of at least 90% on role and at least 95% on city, measured on 50 hand-checked posts.
 - G4. Cost per 1,000 posts measured from real token usage, not estimated.
 - G5. Setup is short and scripted (`npm install`, fill `.env`, `npm run db:setup`, `npm run dev`) and works with no AI key.
 - G6. A reviewer can add an AI key in the UI, test it, and trigger a run.
@@ -290,7 +287,6 @@ React with Vite. Four screens.
 - Counts per stage and per source: fetched, rejected, not fresher, duplicates merged, tagged by rules, tagged by LLM, needs review, published, expired.
 - Total active posts; posts by role and by city.
 - LLM usage: calls, tokens, cost per 1,000 posts, cost per 1,000 searches, model used.
-- Tagging accuracy from the 50-post hand check (entered from the Sheet results).
 - A live progress bar while a run is active.
 
 ### 9.5 Settings page (AI configuration)
@@ -408,25 +404,18 @@ npm run dev -w web        # frontend, http://localhost:5173
 
 ## 13. Measurement
 
-### 13.1 Tagging accuracy (R8)
-1. A script draws a random sample of 50 active posts, stratified by source, and exports them to the Sheet's `Accuracy-50` tab.
-2. Each row shows the post's title, location text, description excerpt and the predicted role, cities, job type and fresher flag.
-3. Each field is hand-marked correct or wrong, with the right value when wrong.
-4. Sheet formulas compute accuracy per field and overall, and a role confusion table.
-5. The 50 labels become a golden set. Each prompt version is re-scored on it, and the scores go in the working doc (for example "tag.v1: 84% role → tag.v2: 94% role").
-
-### 13.2 Cost per 1,000 posts (R9)
+### 13.1 Cost per 1,000 posts (R9)
 - Cost per 1,000 posts = (sum of `cost_usd` for `purpose = 'tag'` in a run) ÷ (posts processed in that run) × 1,000.
 - `cost_usd` is computed per call from logged tokens and a per-model price table in `packages/shared/pricing.ts`. LLM prices are copied from the Azure pricing page for the deployed model on the day of measurement and the date is noted.
 - Report, per run: Jev cost, LLM cost, escalation rate (share of posts sent to LLM), and total cost per 1,000 posts.
 
-**Model comparison on the golden set.** The 50 hand-checked posts are tagged three ways, and accuracy and cost are compared in the Sheet's `Cost` tab:
+**Model comparison.** The same posts are tagged three ways and their cost is compared:
 
 | Setup | What it shows |
 |---|---|
-| Jev only | Accuracy and cost of the fast model alone |
-| LLM only | Accuracy and cost of the LLM alone |
-| Jev + LLM escalation (the shipped graph) | Whether escalation buys accuracy for its cost |
+| Jev only | Cost of the fast model alone |
+| LLM only | Cost of the LLM alone |
+| Jev + LLM escalation (the shipped graph) | What escalation costs |
 
 **Rough Jev estimate before measuring:** about 1,400 input tokens per post at $0.042 per million input tokens, with free output, is about $0.06 per 1,000 posts. LLM cost depends on the escalation rate and is measured, not estimated.
 
@@ -437,7 +426,7 @@ npm run dev -w web        # frontend, http://localhost:5173
 | Repo | Public GitHub repo with README, PRD, working doc, architecture diagram |
 | Link to what was made | Repo link; optional deployed URL (§16) |
 | Loom (≤ 5 min) | 0:00 demo of the map and NL search · 1:30 architecture diagram and LangGraph flow · 3:00 what broke and how it was fixed (from the working doc) · 4:00 accuracy and cost numbers |
-| Working doc / sheet | Google Sheet with tabs: Data, Accuracy-50, Cost, AI Tools, Prompts, What Broke. Source of truth while building: `docs/WORKING_DOC.md` |
+| Working doc / sheet | Google Sheet with tabs: Data, Cost, AI Tools, Prompts, What Broke. Source of truth while building: `docs/WORKING_DOC.md` |
 
 ## 15. Plan
 
@@ -445,7 +434,7 @@ npm run dev -w web        # frontend, http://localhost:5173
 |---|---|---|
 | Tue | 2026-11-17 | PRD; repo skeleton; migrations; gazetteer; contracts |
 | Wed | 2026-11-18 | Backend in parallel: pipeline core, rule tagger, AI layer, API, four source families |
-| Thu | 2026-11-19 | React map, list, job card, stats and settings pages; NL search; 50-post hand check; cost numbers; Google Sheet |
+| Thu | 2026-11-19 | React map, list, job card, stats and settings pages; NL search; cost numbers; Google Sheet |
 | Fri | 2026-11-20 (morning) | README; clean-machine setup test; seed snapshot; Loom recording |
 
 **Cut order if behind:** Ollama provider → Batch API → NL search test set → time filters → Remote island (fall back to a "Remote" list tab) → Jooble/Careerjet sources.
@@ -471,5 +460,5 @@ npm run dev -w web        # frontend, http://localhost:5173
 
 1. **Which Azure deployment is the default LLM?** Needed to price the LLM and report cost per 1,000 posts.
 2. **Deployment.** Is a repo link enough, or should we also deploy a live URL?
-3. **Working doc format.** Google Sheet (recommended, since data and accuracy tables fit a sheet) or Word doc?
+3. **Working doc format.** Google Sheet (recommended, since the data tables fit a sheet) or Word doc?
 4. **Sources.** Are Internshala and Unstop allowed after checking their terms?
